@@ -1,6 +1,14 @@
-import React from "react";
-import { Heading } from "@/components/Home/Home.styled";
+import React, { FC, ReactElement } from "react";
+import Navigation from "../Navigation";
+import Header from "@/components/Home/Header";
+import { Wrapper } from "./Home.styled";
 
-export default function Home() {
-	return <Heading>Home</Heading>;
-}
+const Home: FC = (): ReactElement => {
+	return (
+		<Wrapper>
+			<Navigation />
+			<Header />
+		</Wrapper>
+	);
+};
+export default Home;

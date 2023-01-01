@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const Heading = styled.div`
-	color: red;
-	background-color: blue;
+export const Wrapper = styled.div`
+	height: 100vh;
+	width: 100%;
+	background-color: ${({ theme }) => theme.colors.bgPrimary};
 `;
