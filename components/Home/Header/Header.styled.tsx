@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Wrapper = styled.div`
 	background-image: url(${(props) => props.image.src});
@@ -43,7 +44,7 @@ export const Heading = styled.h1`
 		text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.658);
 	}
 `;
-export const Text = styled.p`
+export const Text = styled.div`
 	position: absolute;
 	bottom: 5%;
 	left: 50%;
@@ -53,4 +54,28 @@ export const Text = styled.p`
 	font-size: 18px;
 	letter-spacing: 1px;
 	color: ${({ theme }) => theme.colors.white};
+`;
+
+const arrowMove = keyframes`
+	0%{
+		transform: translateY(0) scale(1);
+	}
+	30%{
+		transform: translateY(20px) scale(1.2);
+	}
+	60%{
+		transform: translateY(-5px) scale(0.9);
+	}
+	100%{
+		transform: translateY(0) scale(1);
+	}
+`;
+
+export const ArrowDownIcon = styled(FontAwesomeIcon)`
+	width: 45px;
+	height: 45px;
+	margin-top: 10px;
+	color: ${({ theme }) => theme.colors.bgPrimary};
+	animation: 1s ${arrowMove} infinite;
+	cursor: pointer;
 `;

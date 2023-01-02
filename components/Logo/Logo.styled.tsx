@@ -9,7 +9,6 @@ export const LogoWrapper = styled.div`
 
 export const CompanyName = styled.strong`
 	color: ${({ theme }) => theme.colors.white};
-	/* color: aliceblue; */
 	text-transform: uppercase;
 	font-size: 20px;
 	text-decoration: none;
