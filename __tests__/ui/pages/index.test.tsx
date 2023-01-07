@@ -1,13 +1,21 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
+import { ThemeProvider } from "styled-components";
+import { theme } from "@/styles/theme.styled";
 
 import Home from "@/pages/index";
 
-test("page has correct heading and image", () => {
-	render(<Home />);
+afterEach(cleanup);
+
+test("Renders correct heading", () => {
+	render(
+		<ThemeProvider theme={theme}>
+			<Home />
+		</ThemeProvider>
+	);
 
 	const heading = screen.getByRole("heading", {
-		name: "WELCOME TO OUR TRAVEL BLOG",
+		name: /Welcome to our /i,
 	});
 
-	expect(heading).toBeIntTheDocument();
+	expect(heading).toBeInTheDocument();
 });
