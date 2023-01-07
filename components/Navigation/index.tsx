@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from "react";
+import React, { FC, ReactElement, useState } from "react";
 import Logo from "@/components/Logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,41 +12,56 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faPinterestP, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import ModeToggle from "./ModeToggle";
+import SideMobileNavigation from "../SideMobileNavigation";
 
 const Navigation: FC = (): ReactElement => {
+	const [isOpen, setIsOpen] = useState(false);
 	return (
-		<Nav>
-			<Logo />
-			<MenuList>
-				<li>
-					<Link href='/'>Home</Link>
-				</li>
+		<>
+			<Nav>
+				<Logo />
+				<MenuList>
+					<li>
+						<Link href='/'>Home</Link>
+					</li>
 
-				<li>
-					<Link href='/about'>About</Link>
-				</li>
+					<li>
+						<Link href='/about'>About</Link>
+					</li>
 
-				<li>
-					<Link href='articles'>Articles</Link>
-				</li>
+					<li>
+						<Link href='articles'>Articles</Link>
+					</li>
 
-				<li>
-					<Link href='photos'>Photos</Link>
-				</li>
-			</MenuList>
-			<RightNav>
-				<Socials>
-					<a href='https://pl.pinterest.com/' target='_blank' rel='noreferrer'>
-						<FontAwesomeIcon icon={faPinterestP} />
-					</a>
-					<a href='https://www.instagram.com/' target='_blank' rel='noreferrer'>
-						<FontAwesomeIcon icon={faInstagram} />
-					</a>
-				</Socials>
-				<ModeToggle />
-				<MenuBarsIcon icon={faBars} />
-			</RightNav>
-		</Nav>
+					<li>
+						<Link href='photos'>Photos</Link>
+					</li>
+				</MenuList>
+				<RightNav>
+					<Socials>
+						<a
+							href='https://pl.pinterest.com/'
+							target='_blank'
+							rel='noreferrer'
+						>
+							<FontAwesomeIcon icon={faPinterestP} />
+						</a>
+						<a
+							href='https://www.instagram.com/'
+							target='_blank'
+							rel='noreferrer'
+						>
+							<FontAwesomeIcon icon={faInstagram} />
+						</a>
+					</Socials>
+					<ModeToggle />
+					<button>
+						<MenuBarsIcon icon={faBars} onClick={() => setIsOpen(true)} />
+					</button>
+				</RightNav>
+			</Nav>
+			{isOpen && <SideMobileNavigation setIsOpen={setIsOpen} />}
+		</>
 	);
 };
 

@@ -13,6 +13,7 @@ export const theme = {
 	gradients: {
 		primary:
 			"linear-gradient(180deg, #C6B2A3 0%, rgba(237, 229, 222, 0.91) 100%)",
+		dark: "linear-gradient(180deg, #1a1918 0%, rgba(59, 32, 8, 0.479) 100%)",
 	},
 	breakpoints: {
 		small: "576px",

@@ -10,6 +10,11 @@ export const Nav = styled.nav`
 	padding: 5px 10px;
 	background-color: transparent;
 	z-index: 1000;
+
+	button {
+		border: none;
+		background: transparent;
+	}
 `;
 
 export const MenuList = styled.ul`
@@ -55,7 +60,6 @@ export const Socials = styled.div`
 `;
 
 export const MenuBarsIcon = styled(FontAwesomeIcon)`
-	display: block;
 	width: 40px;
 	height: 40px;
 	color: ${({ theme }) => theme.colors.bgPrimary};
