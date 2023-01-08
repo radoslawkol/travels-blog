@@ -11,7 +11,6 @@ import Footer from "../Footer";
 const Home: FC = (): ReactElement => {
 	return (
 		<Wrapper>
-			<Navigation />
 			<Header />
 			<NewsletterBanner />
 			<LatestPosts />
@@ -19,7 +18,6 @@ const Home: FC = (): ReactElement => {
 			<section className='about'>
 				<AboutInfo />
 			</section>
-			<Footer />
 		</Wrapper>
 	);
 };

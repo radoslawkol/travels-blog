@@ -3,13 +3,15 @@ import type { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import { theme } from "@/styles/theme.styled";
 import GlobalStyles from "@/styles/globals.styled";
-import SideMobileNavigation from "@/components/SideMobileNavigation";
+import Layout from "@/components/Layout";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyles />
-			<Component {...pageProps} />
+			<Layout>
+				<Component {...pageProps} />
+			</Layout>
 		</ThemeProvider>
 	);
 }
