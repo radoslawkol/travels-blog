@@ -5,7 +5,7 @@ import Home from "@/components/Home";
 
 const HomePage: NextPage = () => {
 	useEffect(() => {
-		document.body.style.backgroundColor = "#F8F8F8";
+		document.body.style.background = "#F8F8F8";
 	}, []);
 	return (
 		<>
