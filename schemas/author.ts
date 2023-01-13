@@ -2,8 +2,8 @@ import { UserIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export const authorSchema = defineType({
-	title: "Author",
-	name: "author",
+	title: "Authors",
+	name: "authors",
 	icon: UserIcon,
 	type: "document",
 	fields: [

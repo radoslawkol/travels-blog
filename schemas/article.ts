@@ -2,8 +2,8 @@ import { defineType, defineField } from "sanity";
 import { authorSchema } from "./author";
 
 export const articleSchema = defineType({
-	title: "Article",
-	name: "article",
+	title: "Articles",
+	name: "articles",
 	type: "document",
 	fields: [
 		defineField({
