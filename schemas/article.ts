@@ -1,9 +1,10 @@
+import { categorySchema } from "./category";
 import { defineType, defineField } from "sanity";
 import { authorSchema } from "./author";
 
 export const articleSchema = defineType({
-	title: "Articles",
-	name: "articles",
+	title: "Article",
+	name: "article",
 	type: "document",
 	fields: [
 		defineField({
@@ -22,6 +23,12 @@ export const articleSchema = defineType({
 				isUnique: (value, context) => context.defaultIsUnique(value, context),
 			},
 			validation: (rule) => rule.required(),
+		}),
+		defineField({
+			title: "Categories",
+			name: "categories",
+			type: "array",
+			of: [{ type: "reference", to: [{ type: categorySchema.name }] }],
 		}),
 		defineField({
 			title: "Author",

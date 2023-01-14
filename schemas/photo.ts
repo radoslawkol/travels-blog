@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
-export const photosSchema = defineType({
-	title: "Photos",
-	name: "photos",
+export const photoSchema = defineType({
+	title: "Photo",
+	name: "photo",
 	type: "document",
 	fields: [
 		defineField({

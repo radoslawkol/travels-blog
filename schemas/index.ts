@@ -1,5 +1,11 @@
+import { categorySchema } from "./category";
 import { authorSchema } from "./author";
 import { articleSchema } from "./article";
-import { photosSchema } from "./photos";
+import { photoSchema } from "./photo";
 
-export const schemaTypes = [articleSchema, authorSchema, photosSchema];
+export const schemaTypes = [
+	articleSchema,
+	authorSchema,
+	photoSchema,
+	categorySchema,
+];
