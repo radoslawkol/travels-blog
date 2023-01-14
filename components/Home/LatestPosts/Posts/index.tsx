@@ -2,12 +2,16 @@ import React, { FC, ReactElement } from "react";
 import { Container } from "./Posts.styled";
 import Post from "../Post";
 
-const Posts: FC = (): ReactElement => {
+interface Props {
+	articles: object[];
+}
+
+const Posts: FC<Props> = ({ articles }): ReactElement => {
 	return (
 		<Container>
-			<Post />
-			<Post />
-			<Post />
+			{articles.map((article) => (
+				<Post key={article._id} article={article} />
+			))}
 		</Container>
 	);
 };

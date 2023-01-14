@@ -1,17 +1,18 @@
 import React, { FC, ReactElement } from "react";
 import Image from "next/image";
 import { Card } from "./Post.styled";
-const Post: FC = (): ReactElement => {
+
+interface Props {
+	article: object;
+}
+
+const Post: FC<Props> = ({ article }): ReactElement => {
 	return (
-		<Card href='/articles/1'>
+		<Card href={`/articles/${article.slug.current}`}>
 			<div>
-				<Image
-					src='https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1642&q=80'
-					fill
-					alt='Landscape In Thailand'
-				/>
+				<Image src={article.coverImage.asset.url} fill alt={article.title} />
 			</div>
-			<p>10 Best Cities to Visit in Europe in 2023</p>
+			<p>{article.title}</p>
 		</Card>
 	);
 };

@@ -1,20 +1,16 @@
 import React, { FC, ReactElement } from "react";
 import { Container } from "./PostsCategories.styled";
 
-const PostsCategories: FC = (): ReactElement => {
+interface Props {
+	categories: object[];
+}
+
+const PostsCategories: FC<Props> = ({ categories }): ReactElement => {
 	return (
 		<Container>
-			<button>Thailand</button>
-			<button>Egypt</button>
-			<button>Germany</button>
-			<button>Germany</button>
-			<button>Germany</button>
-			<button>Germany</button>
-			<button>Germany</button>
-			<button>Germany</button>
-			<button>Germany</button>
-			<button>Germany</button>
-			<button>Germany</button>
+			{categories.map((category) => (
+				<button key={category._id}>{category.category}</button>
+			))}
 		</Container>
 	);
 };
