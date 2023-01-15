@@ -9,6 +9,7 @@ export const photoSchema = defineType({
 			title: "Photo",
 			name: "photo",
 			type: "image",
+			options: { hotspot: true },
 			validation: (rule) => rule.required(),
 		}),
 		defineField({
@@ -16,6 +17,12 @@ export const photoSchema = defineType({
 			name: "title",
 			type: "string",
 			validation: (rule) => rule.required().min(15).max(60),
+		}),
+		defineField({
+			title: "Date",
+			name: "date",
+			type: "date",
+			validation: (rule) => rule.required(),
 		}),
 	],
 });

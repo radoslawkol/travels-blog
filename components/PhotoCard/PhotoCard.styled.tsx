@@ -25,6 +25,8 @@ export const Card = styled.article`
 export const Info = styled.div`
 	position: absolute;
 	bottom: 0;
+	left: 0;
+	width: 100%;
 	padding: 10px;
 	border-radius: 0 0 15px 15px;
 	background-color: rgba(245, 239, 239, 0.719);

@@ -1,11 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, FC, ReactElement } from "react";
 import CategoryButton from "@/components/CategoryButton";
 import Head from "next/head";
 import React from "react";
 import styled from "styled-components";
 import PhotoCard from "@/components/PhotoCard";
+import { createClient } from "next-sanity";
 
-export default function PhotosPage() {
+interface Props {
+	photos: { _id: string }[];
+	categories: { _id: string; category: string }[];
+}
+
+const client = createClient({
+	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+	apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
+	useCdn: true,
+});
+
+export const PhotosPage: FC<Props> = ({ photos, categories }): ReactElement => {
 	useEffect(() => {
 		document.body.style.background =
 			"linear-gradient(180deg, #c6b2a3ba 0%, rgba(237, 229, 222, 0.91) 40%)";
@@ -17,30 +30,38 @@ export default function PhotosPage() {
 			</Head>
 			<Section>
 				<Container>
-					<CategoryButton category='towns' />
-					<CategoryButton category='mountains' />
-					<CategoryButton category='seaside' />
-					<CategoryButton category='seaside' />
-					<CategoryButton category='seaside' />
-					<CategoryButton category='seaside' />
-					<CategoryButton category='seaside' />
+					{categories.map((category) => (
+						<CategoryButton category={category.category} key={category._id} />
+					))}
 				</Container>
 				<Cards>
-					<PhotoCard />
-					<PhotoCard />
-					<PhotoCard />
-					<PhotoCard />
-					<PhotoCard />
-					<PhotoCard />
-					<PhotoCard />
-					<PhotoCard />
-					<PhotoCard />
-					<PhotoCard />
+					{photos.map((photo) => (
+						<PhotoCard key={photo._id} photo={photo} />
+					))}
 				</Cards>
 			</Section>
 		</>
 	);
-}
+};
+
+export const getStaticProps = async () => {
+	const photos = await client.fetch(`*[_type == "photo"]{
+		title, date, photo{
+			asset->{
+				_id,
+				url
+			}
+		}
+	}`);
+	const categories = await client.fetch(`*[_type == "category"]`);
+
+	return {
+		props: {
+			photos,
+			categories,
+		},
+	};
+};
 
 const Section = styled.section`
 	padding: 100px 20px;
@@ -71,3 +92,5 @@ const Cards = styled.div`
 		justify-content: center;
 	}
 `;
+
+export default PhotosPage;

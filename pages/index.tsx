@@ -12,8 +12,8 @@ const client = createClient({
 });
 
 interface Props {
-	articles: { any }[];
-	categories: { any }[];
+	articles: object[];
+	categories: object[];
 }
 
 const HomePage: NextPage<Props> = ({ articles, categories }) => {
