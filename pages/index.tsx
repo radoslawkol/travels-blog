@@ -11,12 +11,12 @@ const client = createClient({
 	useCdn: true,
 });
 
-interface Props {
+interface IProps {
 	articles: object[];
 	categories: object[];
 }
 
-const HomePage: NextPage<Props> = ({ articles, categories }) => {
+const HomePage: NextPage<IProps> = ({ articles, categories }) => {
 	useEffect(() => {
 		document.body.style.background = "#F8F8F8";
 	}, []);

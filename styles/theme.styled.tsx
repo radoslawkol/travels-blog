@@ -21,5 +21,6 @@ export const theme = {
 		large: "992px",
 		xLarge: "1200px",
 		xxLarge: "1400px",
+		xxxLarge: "1800px",
 	},
 };

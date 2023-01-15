@@ -3,7 +3,7 @@ import React from "react";
 
 type Props = {};
 
-class Document extends NextDocument<Props> {
+class Document extends NextDocument<IProps> {
 	render() {
 		return (
 			<Html>

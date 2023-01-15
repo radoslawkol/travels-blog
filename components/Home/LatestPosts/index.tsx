@@ -3,12 +3,12 @@ import { Section } from "./LatestPosts.styled";
 import PostsCategories from "./PostsCategories";
 import Posts from "./Posts";
 
-interface Props {
+interface IProps {
 	articles: object[];
 	categories: object[];
 }
 
-const LatestPosts: FC<Props> = ({ articles, categories }): ReactElement => {
+const LatestPosts: FC<IProps> = ({ articles, categories }): ReactElement => {
 	return (
 		<Section>
 			<PostsCategories categories={categories} />

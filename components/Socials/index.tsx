@@ -7,7 +7,7 @@ type Props = {
 	color?: string;
 };
 
-const Socials: FC<Props> = (props): ReactElement => {
+const Socials: FC<IProps> = (props): ReactElement => {
 	return (
 		<Container color={props.color}>
 			<a href='https://pl.pinterest.com/' target='_blank' rel='noreferrer'>

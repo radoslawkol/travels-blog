@@ -27,9 +27,12 @@ export const MenuList = styled.ul`
 
 	li {
 		a {
-			color: ${({ theme }) => theme.colors.bgPrimary};
+			/* color: ${({ theme }) => theme.colors.bgPrimary}; */
+			color: ${(props) =>
+				props.isArticlesPage
+					? ({ theme }) => theme.colors.darkPrimary
+					: ({ theme }) => theme.colors.bgPrimary};
 			text-decoration: none;
-			/* font-weight: lighter; */
 			letter-spacing: 0.5px;
 			transition: text-transform 0.3s;
 		}
@@ -52,7 +55,10 @@ export const Socials = styled.div`
 	display: none;
 	gap: 10px;
 	a {
-		color: ${({ theme }) => theme.colors.bgPrimary};
+		color: ${(props) =>
+			props.isArticlesPage
+				? ({ theme }) => theme.colors.darkPrimary
+				: ({ theme }) => theme.colors.bgPrimary};
 	}
 	@media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
 		display: flex;
@@ -62,7 +68,10 @@ export const Socials = styled.div`
 export const MenuBarsIcon = styled(FontAwesomeIcon)`
 	width: 40px;
 	height: 40px;
-	color: ${({ theme }) => theme.colors.bgPrimary};
+	color: ${(props) =>
+		props.isArticlesPage
+			? ({ theme }) => theme.colors.darkPrimary
+			: ({ theme }) => theme.colors.bgPrimary};
 	cursor: pointer;
 	@media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
 		display: none;

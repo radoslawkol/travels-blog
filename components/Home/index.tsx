@@ -6,12 +6,12 @@ import LatestPosts from "./LatestPosts";
 import Banner from "./Banner";
 import AboutInfo from "../AboutInfo";
 
-interface Props {
+interface IProps {
 	articles: object[];
 	categories: object[];
 }
 
-const Home: FC<Props> = ({ articles, categories }): ReactElement => {
+const Home: FC<IProps> = ({ articles, categories }): ReactElement => {
 	return (
 		<Wrapper>
 			<Header />

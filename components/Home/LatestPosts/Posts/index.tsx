@@ -2,11 +2,11 @@ import React, { FC, ReactElement } from "react";
 import { Container } from "./Posts.styled";
 import Post from "../Post";
 
-interface Props {
+interface IProps {
 	articles: object[];
 }
 
-const Posts: FC<Props> = ({ articles }): ReactElement => {
+const Posts: FC<IProps> = ({ articles }): ReactElement => {
 	return (
 		<Container>
 			{articles.map((article) => (

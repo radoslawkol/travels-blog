@@ -14,13 +14,17 @@ import Link from "next/link";
 import ModeToggle from "./ModeToggle";
 import SideMobileNavigation from "../SideMobileNavigation";
 
-const Navigation: FC = (): ReactElement => {
+interface IProps {
+	isArticlesPage: boolean;
+}
+
+const Navigation: FC<IProps> = ({ isArticlesPage }): ReactElement => {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<>
 			<Nav>
-				<Logo />
-				<MenuList>
+				<Logo isArticlesPage={isArticlesPage} />
+				<MenuList isArticlesPage={isArticlesPage}>
 					<li>
 						<Link href='/'>Home</Link>
 					</li>
@@ -38,7 +42,7 @@ const Navigation: FC = (): ReactElement => {
 					</li>
 				</MenuList>
 				<RightNav>
-					<Socials>
+					<Socials isArticlesPage={isArticlesPage}>
 						<a
 							href='https://pl.pinterest.com/'
 							target='_blank'
@@ -56,7 +60,11 @@ const Navigation: FC = (): ReactElement => {
 					</Socials>
 					<ModeToggle />
 					<button>
-						<MenuBarsIcon icon={faBars} onClick={() => setIsOpen(true)} />
+						<MenuBarsIcon
+							isArticlesPage={isArticlesPage}
+							icon={faBars}
+							onClick={() => setIsOpen(true)}
+						/>
 					</button>
 				</RightNav>
 			</Nav>

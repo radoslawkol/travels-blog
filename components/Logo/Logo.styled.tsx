@@ -8,7 +8,10 @@ export const LogoWrapper = styled.div`
 `;
 
 export const CompanyName = styled.strong`
-	color: ${({ theme }) => theme.colors.white};
+	color: ${(props) =>
+		props.isArticlesPage
+			? ({ theme }) => theme.colors.darkPrimary
+			: ({ theme }) => theme.colors.bgPrimary};
 	text-transform: uppercase;
 	font-size: 20px;
 	text-decoration: none;

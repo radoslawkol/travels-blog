@@ -3,11 +3,11 @@ import { Card, Info } from "./PhotoCard.styled";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-interface Props {
+interface IProps {
 	photo: object;
 }
 
-const PhotoCard: FC<Props> = ({ photo }): ReactElement => {
+const PhotoCard: FC<IProps> = ({ photo }): ReactElement => {
 	return (
 		<Card>
 			<LazyLoadImage

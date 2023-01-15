@@ -6,7 +6,7 @@ import styled from "styled-components";
 import PhotoCard from "@/components/PhotoCard";
 import { createClient } from "next-sanity";
 
-interface Props {
+interface IProps {
 	photos: { _id: string }[];
 	categories: { _id: string; category: string }[];
 }
@@ -18,7 +18,10 @@ const client = createClient({
 	useCdn: true,
 });
 
-export const PhotosPage: FC<Props> = ({ photos, categories }): ReactElement => {
+export const PhotosPage: FC<IProps> = ({
+	photos,
+	categories,
+}): ReactElement => {
 	useEffect(() => {
 		document.body.style.background =
 			"linear-gradient(180deg, #c6b2a3ba 0%, rgba(237, 229, 222, 0.91) 40%)";

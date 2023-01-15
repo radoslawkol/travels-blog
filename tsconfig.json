@@ -19,7 +19,8 @@
 			"@/components/*": ["components/*"],
 			"@/pages/*": ["pages/*"],
 			"@/images/*": ["images/*"],
-			"@/styles/*": ["styles/*"]
+			"@/styles/*": ["styles/*"],
+			"@/utils/*": ["utils/*"]
 		}
 		// "types": ["jest", "node", "@types/testing-library__jest-dom"]
 	},
