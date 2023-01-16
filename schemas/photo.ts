@@ -1,3 +1,4 @@
+import { photoCategorySchema } from "./photoCategory";
 import { defineField, defineType } from "sanity";
 
 export const photoSchema = defineType({
@@ -22,6 +23,13 @@ export const photoSchema = defineType({
 			title: "Date",
 			name: "date",
 			type: "date",
+			validation: (rule) => rule.required(),
+		}),
+		defineField({
+			title: "Categories",
+			name: "categories",
+			type: "array",
+			of: [{ type: "reference", to: [{ type: photoCategorySchema.name }] }],
 			validation: (rule) => rule.required(),
 		}),
 	],

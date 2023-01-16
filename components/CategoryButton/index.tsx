@@ -5,7 +5,6 @@ interface IProps {
 	category: string;
 }
 const CategoryButton: FC<IProps> = ({ category }): ReactElement => {
-
 	return <Button>{category}</Button>;
 };
 

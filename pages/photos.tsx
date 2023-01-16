@@ -1,31 +1,44 @@
-import { useEffect, FC, ReactElement } from "react";
+import { useEffect, FC, ReactElement, useState } from "react";
 import CategoryButton from "@/components/CategoryButton";
 import Head from "next/head";
 import React from "react";
 import styled from "styled-components";
 import PhotoCard from "@/components/PhotoCard";
-import { createClient } from "next-sanity";
+import { client } from "@/utils/sanityClient";
+import { motion } from "framer-motion";
 
 interface IProps {
-	photos: { _id: string }[];
+	photos: { _id: string; categories: [] }[];
 	categories: { _id: string; category: string }[];
 }
-
-const client = createClient({
-	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-	apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
-	useCdn: true,
-});
 
 export const PhotosPage: FC<IProps> = ({
 	photos,
 	categories,
 }): ReactElement => {
+	const [results, setResults] = useState(photos);
+	const [category, setCategory] = useState("all");
+
 	useEffect(() => {
 		document.body.style.background =
 			"linear-gradient(180deg, #c6b2a3ba 0%, rgba(237, 229, 222, 0.91) 40%)";
 	}, []);
+
+	const fetchByCategory = (category: string) => {
+		if (category !== "all") {
+			const filteredPhotos = photos.filter((photo) => {
+				return photo.categories.includes(category);
+			});
+			setResults(filteredPhotos);
+		} else {
+			setResults(photos);
+		}
+	};
+
+	useEffect(() => {
+		fetchByCategory(category);
+	}, [category]);
+
 	return (
 		<>
 			<Head>
@@ -33,15 +46,25 @@ export const PhotosPage: FC<IProps> = ({
 			</Head>
 			<Section>
 				<Container>
+					<div onClick={() => setCategory("all")}>
+						<CategoryButton category='all' />
+					</div>
 					{categories.map((category) => (
-						<CategoryButton category={category.category} key={category._id} />
+						<div
+							key={category._id}
+							onClick={() => setCategory(category.category)}
+						>
+							<CategoryButton category={category.category} />
+						</div>
 					))}
 				</Container>
-				<Cards>
-					{photos.map((photo) => (
-						<PhotoCard key={photo._id} photo={photo} />
-					))}
-				</Cards>
+				<motion.div layout animate={{ y: 60 }}>
+					<Cards>
+						{results.map((photo) => (
+							<PhotoCard key={photo._id} photo={photo} />
+						))}
+					</Cards>
+				</motion.div>
 			</Section>
 		</>
 	);
@@ -49,14 +72,19 @@ export const PhotosPage: FC<IProps> = ({
 
 export const getStaticProps = async () => {
 	const photos = await client.fetch(`*[_type == "photo"]{
-		title, date, photo{
+		title, date, "categories": categories[
+        ]->category
+        
+		 , photo{
 			asset->{
 				_id,
 				url
 			}
 		}
 	}`);
-	const categories = await client.fetch(`*[_type == "category"]`);
+	const categories = await client.fetch(`*[_type == "photoCategory"]{
+		category
+	}`);
 
 	return {
 		props: {

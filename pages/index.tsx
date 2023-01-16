@@ -2,14 +2,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import type { NextPage } from "next";
 import Home from "@/components/Home";
-import { createClient } from "next-sanity";
-
-const client = createClient({
-	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-	apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
-	useCdn: true,
-});
+import { client } from "@/utils/sanityClient";
 
 interface IProps {
 	articles: object[];

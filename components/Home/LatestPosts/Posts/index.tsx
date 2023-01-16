@@ -9,7 +9,7 @@ interface IProps {
 const Posts: FC<IProps> = ({ articles }): ReactElement => {
 	return (
 		<Container>
-			{articles.map((article) => (
+			{articles.slice(0, 3).map((article) => (
 				<Post key={article._id} article={article} />
 			))}
 		</Container>
