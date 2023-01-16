@@ -3,6 +3,7 @@ import AboutInfo from "../AboutInfo";
 import Image from "next/image";
 import image from "../../images/home-banner.jpg";
 import { ContentImage, Section } from "./AboutContent.styled";
+import { motion } from "framer-motion";
 
 const AboutContent: FC = (): ReactElement => {
 	return (
@@ -13,9 +14,17 @@ const AboutContent: FC = (): ReactElement => {
 			<div className='line'></div>
 			<div>
 				<div>
-					<h2>How does it started?</h2>
+					<motion.h2
+						initial={{ opacity: 0, x: -200 }}
+						whileInView={{ opacity: 1, x: 0 }}
+					>
+						How does it started?
+					</motion.h2>
 					<div className='container-1'>
-						<p>
+						<motion.p
+							initial={{ opacity: 0, y: 100 }}
+							whileInView={{ opacity: 1, y: 0 }}
+						>
 							Lorem ipsum dolor sit amet consectetur. Quam sed dictum sociis
 							libero quis elementum imperdiet. Elit ut feugiat mauris malesuada
 							quis magna porta volutpat. Faucibus integer ullamcorper a suscipit
@@ -24,13 +33,21 @@ const AboutContent: FC = (): ReactElement => {
 							mi nascetur. Massa amet sed nisi fermentum pellentesque vulputate
 							quam non habitant. Vitae blandit commodo sit urna id at massa arcu
 							maecenas. Et cursus sed et faucibus maecenas eros sed a.
-						</p>
+						</motion.p>
 						<ContentImage>
-							<Image src={image} alt='forest' />
+							<motion.div
+								initial={{ opacity: 0, x: 200 }}
+								whileInView={{ opacity: 1, x: 0 }}
+							>
+								<Image src={image} alt='forest' />
+							</motion.div>
 						</ContentImage>
 					</div>
 				</div>
-				<div>
+				<motion.div
+					initial={{ opacity: 0, x: -400 }}
+					whileInView={{ opacity: 1, x: 0 }}
+				>
 					<h2>What Gear do you use?</h2>
 					<p className='lastParagraph'>
 						Lorem ipsum dolor sit amet consectetur. Quam sed dictum sociis
@@ -39,7 +56,7 @@ const AboutContent: FC = (): ReactElement => {
 						ut sit sed facilisis malesuada. Molestie amet risus mattis iaculis
 						urna.
 					</p>
-				</div>
+				</motion.div>
 			</div>
 		</Section>
 	);

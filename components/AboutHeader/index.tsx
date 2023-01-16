@@ -2,6 +2,7 @@ import React, { FC, ReactElement } from "react";
 import headerImageSmall from "../../images/about-header-small.jpg";
 import headerImageLarge from "../../images/about-header-large.jpg";
 import { Header } from "./AboutHeader.styled";
+import { motion } from "framer-motion";
 
 const AboutHeader: FC = (): ReactElement => {
 	return (
@@ -9,7 +10,12 @@ const AboutHeader: FC = (): ReactElement => {
 			headerImageSmall={headerImageSmall}
 			headerImageLarge={headerImageLarge}
 		>
-			<h1>Remember that happiness is a way of travel, not a destination.</h1>
+			<motion.h1
+				initial={{ opacity: 0, y: 100 }}
+				whileInView={{ opacity: 1, y: 0 }}
+			>
+				Remember that happiness is a way of travel, not a destination.
+			</motion.h1>
 			<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'>
 				<title>Wave</title>
 				<path

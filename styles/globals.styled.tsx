@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
 
     body{
         font-family: 'Roboto', sans-serif;
+        overflow-x: hidden;
     }
 `;
 
