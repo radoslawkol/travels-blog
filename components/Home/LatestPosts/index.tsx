@@ -11,7 +11,7 @@ interface IProps {
 const LatestPosts: FC<IProps> = ({ articles, categories }): ReactElement => {
 	return (
 		<Section>
-			<PostsCategories categories={categories} />
+			{/* <PostsCategories categories={categories} /> */}
 			<Posts articles={articles} />
 		</Section>
 	);

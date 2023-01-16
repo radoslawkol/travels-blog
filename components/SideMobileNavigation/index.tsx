@@ -6,12 +6,16 @@ import { Backdrop, Nav, XIcon } from "./SideMobileNavigation.styled";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Socials from "../Socials";
+import { useRouter } from "next/router";
 
-const SideMobileNavigation: FC = ({
+interface IProps {
+	setIsOpen: (isOpen: boolean) => boolean;
+}
+
+const SideMobileNavigation: FC<IProps> = ({
 	setIsOpen,
-}: {
-	setIsOpen: () => boolean;
 }): ReactElement | null => {
+	const router = useRouter();
 	const isMedium = useMediaQuery(`(min-width: 768px)`);
 	const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
 
@@ -19,6 +23,15 @@ const SideMobileNavigation: FC = ({
 		setModalRoot(document.getElementById("modal-root") as HTMLElement);
 		console.log(modalRoot);
 	}, [modalRoot]);
+
+	useEffect(() => {
+		const closeNav = () => setIsOpen(false);
+		router.events.on("routeChangeComplete", closeNav);
+
+		return () => {
+			router.events.off("routeChangeComplete", closeNav);
+		};
+	});
 
 	if (modalRoot && !isMedium) {
 		return ReactDOM.createPortal(
