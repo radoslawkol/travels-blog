@@ -20,11 +20,12 @@ export const Container = styled.div`
 		text-transform: uppercase;
 		color: ${({ theme }) => theme.colors.darkBrown};
 	}
-	q {
-		color: ${({ theme }) => theme.colors.darkBlack};
+	i {
+		color: ${({ theme }) => theme.colors.textSecondary};
 	}
 	p {
 		margin-top: 10px;
-		color: ${({ theme }) => theme.colors.darkBlack};
+		letter-spacing: 0.5px;
+		color: ${({ theme }) => theme.colors.textSecondary};
 	}
 `;

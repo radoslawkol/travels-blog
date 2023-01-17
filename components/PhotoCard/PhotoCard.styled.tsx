@@ -5,7 +5,7 @@ export const Card = styled.article`
 	width: 300px;
 	height: 360px;
 	border-radius: 15px;
-	box-shadow: 2px 4px 10px 6px rgba(51, 45, 45, 0.164);
+	box-shadow: ${({ theme }) => theme.colors.boxShadowDefault};
 	overflow: hidden;
 	transition: box-shadow 0.5s, transform 0.5s;
 	img {
@@ -18,7 +18,7 @@ export const Card = styled.article`
 
 	&:hover {
 		transform: scale(1.05);
-		box-shadow: 2px 4px 12px 8px rgba(51, 45, 45, 0.164);
+		box-shadow: ${({ theme }) => theme.colors.boxShadowHover};
 	}
 `;
 
@@ -29,7 +29,7 @@ export const Info = styled.div`
 	width: 100%;
 	padding: 10px;
 	border-radius: 0 0 15px 15px;
-	background-color: rgba(245, 239, 239, 0.719);
+	background-color: ${({ theme }) => theme.colors.transparentDefault};
 	transform: translateY(100%);
 	z-index: 1;
 	transition: transform 0.5s;
@@ -37,7 +37,7 @@ export const Info = styled.div`
 		transform: translateY(0%);
 	}
 	span {
-		color: ${({ theme }) => theme.colors.darkPrimary};
+		color: ${({ theme }) => theme.colors.textSecondary};
 	}
 
 	h3 {
@@ -46,6 +46,6 @@ export const Info = styled.div`
 		font-weight: 600;
 		letter-spacing: 0.2px;
 		text-transform: capitalize;
-		color: ${({ theme }) => theme.colors.darkPrimary};
+		color: ${({ theme }) => theme.colors.textSecondary};
 	}
 `;

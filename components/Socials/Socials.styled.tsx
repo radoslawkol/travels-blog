@@ -6,6 +6,7 @@ export const Container = styled.div`
 	padding: 10px 0;
 	a {
 		font-size: 18px;
-		color: ${({ color }) => color};
+		color: ${({ color }) =>
+			color ? color : ({ theme }) => theme.colors.textWhite};
 	}
 `;

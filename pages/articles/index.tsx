@@ -1,4 +1,4 @@
-import { FC, ReactElement, useEffect, useState } from "react";
+import { FC, ReactElement, useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import React from "react";
 import { client } from "@/utils/sanityClient";
@@ -7,6 +7,8 @@ import styled from "styled-components";
 import CategoryButton from "@/components/CategoryButton";
 import Pagination from "@/components/Pagination";
 import { groq } from "next-sanity";
+import { ThemeContext } from "../_app";
+import { useTheme } from "styled-components";
 
 interface IProps {
 	articles: { _id: string }[];
@@ -20,6 +22,7 @@ const ArticlesPage: FC<IProps> = ({
 	categories,
 	total,
 }): ReactElement => {
+	const theme = useTheme();
 	const [results, setResults] = useState<{ _id: string }[]>(articles);
 	const [lastId, setLastId] = useState<string | null>("");
 	const [prevId, setPrevId] = useState<string | null>("");
@@ -27,6 +30,10 @@ const ArticlesPage: FC<IProps> = ({
 	const [lastPage, setLastPage] = useState<number>(0);
 	const [prevPages, setPrevPages] = useState([]);
 	const [category, setCategory] = useState("");
+
+	useEffect(() => {
+		document.body.style.background = theme.colors.bgPrimary;
+	}, [theme.colors.bgPrimary]);
 
 	useEffect(() => {
 		setLastId(articles[articles.length - 1]._id);

@@ -22,16 +22,14 @@ export const MenuList = styled.ul`
 	align-items: center;
 	gap: 20px;
 	font-size: 18px;
-	color: ${({ theme }) => theme.colors.bgPrimary};
 	list-style: none;
 
 	li {
 		a {
-			/* color: ${({ theme }) => theme.colors.bgPrimary}; */
 			color: ${(props) =>
 				props.isArticlesPage
-					? ({ theme }) => theme.colors.darkPrimary
-					: ({ theme }) => theme.colors.bgPrimary};
+					? ({ theme }) => theme.colors.textSecondary
+					: ({ theme }) => theme.colors.textWhite};
 			text-decoration: none;
 			letter-spacing: 0.5px;
 			transition: text-transform 0.3s;
@@ -57,7 +55,7 @@ export const Socials = styled.div`
 	a {
 		color: ${(props) =>
 			props.isArticlesPage
-				? ({ theme }) => theme.colors.darkPrimary
+				? ({ theme }) => theme.colors.textBlack
 				: ({ theme }) => theme.colors.bgPrimary};
 	}
 	@media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
@@ -70,8 +68,8 @@ export const MenuBarsIcon = styled(FontAwesomeIcon)`
 	height: 40px;
 	color: ${(props) =>
 		props.isArticlesPage
-			? ({ theme }) => theme.colors.darkPrimary
-			: ({ theme }) => theme.colors.bgPrimary};
+			? ({ theme }) => theme.colors.textBlack
+			: ({ theme }) => theme.colors.textWhite};
 	cursor: pointer;
 	@media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
 		display: none;

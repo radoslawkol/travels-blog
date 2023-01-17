@@ -5,7 +5,8 @@ export const Container = styled.div`
 	display: inline-flex;
 	align-items: center;
 	border-radius: 15px;
-	background-color: ${({ theme }) => theme.colors.lightBrown};
+	border: 1px solid ${({ theme }) => theme.colors.darkBrown};
+	background-color: ${({ theme }) => theme.colors.bgLightBrown};
 	box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.116);
 
 	button {

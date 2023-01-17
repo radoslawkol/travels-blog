@@ -11,7 +11,7 @@ export const Input = styled.input`
 	visibility: hidden;
 
 	&:checked + Label {
-		background: #242424;
+		background: black;
 	}
 	&:checked + Label::after {
 		left: 55px;
@@ -25,7 +25,7 @@ export const Label = styled.label`
 	display: block;
 	width: 60px;
 	height: 30px;
-	background: white;
+	background: ${({ theme }) => theme.colors.white};
 	border-radius: 100px;
 	box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4),
 		inset 0px -5px 15px rgba(255, 255, 255, 0.4);
@@ -33,7 +33,7 @@ export const Label = styled.label`
 	transition: 0.3s;
 
 	&:active::after {
-		width: 5px;
+		width: 50px;
 	}
 
 	::after {

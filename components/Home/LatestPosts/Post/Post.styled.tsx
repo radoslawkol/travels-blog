@@ -17,11 +17,14 @@ export const Card = styled(Link)`
 		}
 	}
 	img {
-		border-radius: 20px;
+		border-radius: 20px 20px 0 0;
 	}
 	p {
 		padding: 10px;
 		font-size: 18px;
-		color: ${({ theme }) => theme.colors.darkBrown};
+		text-transform: capitalize;
+		font-weight: 200;
+		letter-spacing: 0.5px;
+		color: ${({ theme }) => theme.colors.textSecondary};
 	}
 `;

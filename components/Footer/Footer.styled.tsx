@@ -37,8 +37,11 @@ export const Container = styled.footer`
 		margin: 10px 0;
 		border: none;
 		border-radius: 5px;
-		background-color: ${({ theme }) => theme.colors.darkBrown};
+		/* background-color: ${({ theme }) => theme.colors.lightBrown}; */
+		border: 1px solid ${({ theme }) => theme.colors.white};
+		background-color: transparent;
 		cursor: pointer;
+		transition: transform 0.3s, background-color 0.3s;
 		a {
 			display: inline-block;
 			padding: 6px;
@@ -48,6 +51,7 @@ export const Container = styled.footer`
 		}
 		&:hover {
 			transform: scale(0.95);
+			background-color: ${({ theme }) => theme.colors.darkBrown};
 		}
 	}
 	h3 {

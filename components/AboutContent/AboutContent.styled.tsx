@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Section = styled.section`
 	width: 100%;
 	padding: 40px 20px;
-	background-color: ${({ theme }) => theme.colors.lightBrown};
+	background-color: ${({ theme }) => theme.colors.bgLightBrown};
 	@media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
 		padding: 60px 40px;
 	}

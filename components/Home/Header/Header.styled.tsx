@@ -75,7 +75,7 @@ export const ArrowDownIcon = styled(FontAwesomeIcon)`
 	width: 45px;
 	height: 45px;
 	margin-top: 10px;
-	color: ${({ theme }) => theme.colors.bgPrimary};
+	color: ${({ theme }) => theme.colors.textWhite};
 	animation: 1s ${arrowMove} infinite;
 	cursor: pointer;
 `;

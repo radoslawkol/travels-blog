@@ -1,25 +1,23 @@
-import React, { FC, ReactElement, useState } from "react";
+import React, { FC, ReactElement, useEffect, useState } from "react";
 import Logo from "@/components/Logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	MenuBarsIcon,
-	Nav,
-	MenuList,
-	Socials,
-	RightNav,
-} from "./Navigation.styled";
+import { MenuBarsIcon, Nav, MenuList, RightNav } from "./Navigation.styled";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faPinterestP, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import ModeToggle from "./ModeToggle";
 import SideMobileNavigation from "../SideMobileNavigation";
+import Socials from "../Socials";
+import { useTheme } from "styled-components";
 
 interface IProps {
 	isArticlesPage: boolean;
 }
 
 const Navigation: FC<IProps> = ({ isArticlesPage }): ReactElement => {
+	const theme = useTheme();
 	const [isOpen, setIsOpen] = useState(false);
+
 	return (
 		<>
 			<Nav>
@@ -42,22 +40,13 @@ const Navigation: FC<IProps> = ({ isArticlesPage }): ReactElement => {
 					</li>
 				</MenuList>
 				<RightNav>
-					<Socials isArticlesPage={isArticlesPage}>
-						<a
-							href='https://pl.pinterest.com/'
-							target='_blank'
-							rel='noreferrer'
-						>
-							<FontAwesomeIcon icon={faPinterestP} />
-						</a>
-						<a
-							href='https://www.instagram.com/'
-							target='_blank'
-							rel='noreferrer'
-						>
-							<FontAwesomeIcon icon={faInstagram} />
-						</a>
-					</Socials>
+					<Socials
+						color={
+							isArticlesPage
+								? theme.colors.textSecondary
+								: theme.colors.textWhite
+						}
+					/>
 					<ModeToggle />
 					<button>
 						<MenuBarsIcon

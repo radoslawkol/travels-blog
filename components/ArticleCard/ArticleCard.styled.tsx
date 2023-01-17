@@ -12,7 +12,7 @@ export const Article = styled.article`
 		flex-direction: column;
 		justify-content: space-between;
 		padding: 10px 10px 20px;
-		color: ${({ theme }) => theme.colors.darkSecondary};
+		color: ${({ theme }) => theme.colors.textSecondary};
 
 		h3 {
 			font-size: 20px;
@@ -39,7 +39,7 @@ export const Article = styled.article`
 				background-color: transparent;
 				border: 1px solid ${({ theme }) => theme.colors.bgSecondary};
 				a {
-					color: ${({ theme }) => theme.colors.darkSecondary};
+					color: ${({ theme }) => theme.colors.textSecondary};
 				}
 			}
 		}
