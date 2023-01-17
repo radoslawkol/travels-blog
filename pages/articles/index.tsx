@@ -20,12 +20,13 @@ const ArticlesPage: FC<IProps> = ({
 	categories,
 	total,
 }): ReactElement => {
-	const [results, setResults] = useState<{ _id }[]>(articles);
+	const [results, setResults] = useState<{ _id: string }[]>(articles);
 	const [lastId, setLastId] = useState<string | null>("");
 	const [prevId, setPrevId] = useState<string | null>("");
 	const [currentPage, setCurrentPage] = useState(0);
 	const [lastPage, setLastPage] = useState<number>(0);
 	const [prevPages, setPrevPages] = useState([]);
+	const [category, setCategory] = useState("");
 
 	useEffect(() => {
 		setLastId(articles[articles.length - 1]._id);
@@ -36,6 +37,34 @@ const ArticlesPage: FC<IProps> = ({
 		console.log(prevPages);
 		setPrevId(prevPages[currentPage - 1]);
 	}, [prevPages, currentPage]);
+
+	useEffect(() => {
+		if (category === "all") {
+			setCategory("");
+			setResults(articles);
+		} else if (category) {
+			fetchByCategory(category);
+		}
+	}, [category]);
+
+	const fetchByCategory = async (category: string) => {
+		try {
+			const articles =
+				await client.fetch(`*[_type == "article" && "${category}" in categories[]->category]{
+		_id, title, slug, categories[] -> {
+			category
+		}, coverImage{
+					asset->{
+						_id,
+						url
+							}
+						}}`);
+			console.log(articles);
+			setResults(articles);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
 	const fetchNextPage = async () => {
 		setPrevId(results[0]._id);
@@ -115,18 +144,28 @@ const ArticlesPage: FC<IProps> = ({
 			</Head>
 			<Section>
 				<aside>
+					<div onClick={() => setCategory("all")}>
+						<CategoryButton category='all' />
+					</div>
 					{categories.map((category) => (
-						<CategoryButton key={category._id} category={category.category} />
+						<div
+							key={category._id}
+							onClick={() => setCategory(category.category)}
+						>
+							<CategoryButton category={category.category} />
+						</div>
 					))}
 				</aside>
 				<div className='leftWrapper'>
 					<ArticlesContainer articles={results} />
-					<Pagination
-						fetchNextPage={fetchNextPage}
-						fetchPrevPage={fetchPrevPage}
-						currentPage={currentPage}
-						lastPage={lastPage}
-					/>
+					{!category && (
+						<Pagination
+							fetchNextPage={fetchNextPage}
+							fetchPrevPage={fetchPrevPage}
+							currentPage={currentPage}
+							lastPage={lastPage}
+						/>
+					)}
 				</div>
 			</Section>
 		</>

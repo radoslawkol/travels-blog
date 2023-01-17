@@ -9,7 +9,7 @@ export const categorySchema = defineType({
 			title: "Category Name",
 			name: "category",
 			type: "string",
-			validation: (rule) => rule.required().max(25),
+			validation: (rule) => rule.required().max(25).lowercase(),
 		}),
 	],
 });
