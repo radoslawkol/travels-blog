@@ -1,13 +1,87 @@
-import React from "react";
+import React, { FC, ReactElement, useEffect } from "react";
 import Head from "next/head";
+import styled from "styled-components";
+import { useTheme } from "styled-components";
+import Article from "@/components/Article";
+import { client } from "@/utils/sanityClient";
 
-export default function Article() {
+interface IProps {
+	article: object;
+}
+
+const ArticlePage: FC<IProps> = ({ article }): ReactElement => {
+	const theme = useTheme();
+	useEffect(() => {
+		document.body.style.background = theme.colors.bgLightBrown;
+	});
 	return (
 		<>
 			<Head>
 				<title>Travels Blog: How to survive in Asia?</title>
 			</Head>
-			<div>Article Page</div>
+			<Section>
+				<Article article={article} />
+				<div>Sidebar</div>
+			</Section>
 		</>
 	);
+};
+
+const Section = styled.section`
+	min-height: 100vh;
+	padding: 60px 0;
+`;
+
+export default ArticlePage;
+
+interface IArticle {
+	slug: { current: string };
 }
+
+export const getStaticPaths = async () => {
+	try {
+		const articles = await client.fetch(`*[_type == "article"]{
+				slug
+			}`);
+
+		const paths = articles.map((article: IArticle) => {
+			return { params: { slug: article.slug.current } };
+		});
+
+		return {
+			paths,
+			fallback: false,
+		};
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const getStaticProps = async (context: { params: { slug: string } }) => {
+	try {
+		const { slug } = context.params;
+
+		const article = await client.fetch(`
+			*[_type == "article" && slug.current == "${slug}"][0] {
+                _id, title, slug, content[]{
+					..., _type == "image" => {
+						..., asset->
+					}
+				}, categories[]->, date, author->, coverImage{
+					asset->{
+						_id,
+						url
+							}
+								}
+	}
+`);
+
+		return {
+			props: {
+				article,
+			},
+		};
+	} catch (err) {
+		console.log(err);
+	}
+};
