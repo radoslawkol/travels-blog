@@ -1,7 +1,7 @@
 import { render, screen, cleanup } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "@/styles/theme.styled";
-
+import "../../../__mocks__/matchMedia";
 import AboutPage from "@/pages/about";
 
 afterEach(cleanup);
