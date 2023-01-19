@@ -1,9 +1,7 @@
-import React, { FC, ReactElement, useEffect, useState } from "react";
+import React, { FC, ReactElement, useState } from "react";
 import Logo from "@/components/Logo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MenuBarsIcon, Nav, MenuList, RightNav } from "./Navigation.styled";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { faPinterestP, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import ModeToggle from "./ModeToggle";
 import SideMobileNavigation from "../SideMobileNavigation";
@@ -32,11 +30,11 @@ const Navigation: FC<IProps> = ({ isArticlesPage }): ReactElement => {
 					</li>
 
 					<li>
-						<Link href='articles'>Articles</Link>
+						<Link href='/articles'>Articles</Link>
 					</li>
 
 					<li>
-						<Link href='photos'>Photos</Link>
+						<Link href='/photos'>Photos</Link>
 					</li>
 				</MenuList>
 				<RightNav>

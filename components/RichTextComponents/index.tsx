@@ -11,12 +11,12 @@ export const RichTextComponents = {
 
 			return (
 				<Link href={value.href} rel={rel}>
-					{children}
+					<LinkElement>{children}</LinkElement>
 				</Link>
 			);
 		},
 		strong: ({ children }: any) => <Strong>{children}</Strong>,
-		em: ({ children }) => (
+		em: ({ children }: any) => (
 			<Em className='text-gray-600 font-semibold'>{children}</Em>
 		),
 	},
@@ -32,6 +32,7 @@ export const RichTextComponents = {
 		bullet: ({ children }: any) => <Ul>{children}</Ul>,
 		number: ({ children }: any) => <Ol>{children}</Ol>,
 	},
+	listItem: ({ children }: any) => <ListItem>{children}</ListItem>,
 	types: {
 		image: ({ value }: any) => {
 			return (
@@ -43,11 +44,26 @@ export const RichTextComponents = {
 	},
 };
 
+const LinkElement = styled.a`
+	color: ${({ theme }) => theme.colors.bgSecondary};
+`;
+
 const Picture = styled.div`
 	margin: 10px;
 	height: 200px;
 	position: relative;
 	padding: 20px;
+	@media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+		height: 250px;
+		width: 500px;
+		margin: 40px auto;
+	}
+	@media (min-width: ${({ theme }) => theme.breakpoints.xxLarge}) {
+		height: 350px;
+		width: 700px;
+		margin: 40px auto;
+	}
+
 	img {
 		object-fit: cover;
 		border-radius: 15px;
@@ -55,40 +71,66 @@ const Picture = styled.div`
 `;
 
 const Text = styled.p`
-	padding: 10px;
+	padding: 10px 0;
+	color: ${({ theme }) => theme.colors.textSecondary};
+
+	@media (min-width: ${({ theme }) => theme.breakpoints.xxLarge}) {
+		font-size: 18px;
+	}
 `;
 
 const Ul = styled.ul`
 	margin-left: 40px;
 	padding: 5px 0;
-	color: red;
 	list-style-type: disc;
 `;
 
 const Ol = styled.ol`
 	margin-left: 20px;
 	padding: 5px 0;
-	color: green;
 `;
+
+const ListItem = styled.li`
+	padding: 3px;
+	color: ${({ theme }) => theme.colors.textSecondary};
+	@media (min-width: ${({ theme }) => theme.breakpoints.xxLarge}) {
+		font-size: 18px;
+	}
+`;
+
 const H1 = styled.h1`
 	font-size: 26px;
 	padding: 10px 0;
+	color: ${({ theme }) => theme.colors.textSecondary};
+	@media (min-width: ${({ theme }) => theme.breakpoints.xxLarge}) {
+		font-size: 30px;
+	}
 `;
 const H2 = styled.h1`
 	font-size: 26px;
 	padding: 10px 0;
+	color: ${({ theme }) => theme.colors.textSecondary};
+	@media (min-width: ${({ theme }) => theme.breakpoints.xxLarge}) {
+		font-size: 28px;
+	}
 `;
 const H3 = styled.h1`
 	font-size: 22px;
 	padding: 10px 0;
+	color: ${({ theme }) => theme.colors.textSecondary};
+	@media (min-width: ${({ theme }) => theme.breakpoints.large}) {
+		font-size: 28px;
+		padding: 80px 0 20px;
+	}
 `;
 const H4 = styled.h1`
 	font-size: 20px;
 	padding: 10px 0;
+	color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
 const Strong = styled.strong`
-	color: red;
+	color: ${({ theme }) => theme.colors.darkBrown};
 `;
 
 const Em = styled.em`

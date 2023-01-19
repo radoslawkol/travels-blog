@@ -48,18 +48,8 @@ export const articleSchema = defineType({
 			name: "date",
 			type: "datetime",
 			initialValue: () => new Date().toISOString(),
+			validation: (rule) => rule.required(),
 		}),
-		// defineField({
-		// 	title: "Content",
-		// 	name: "content",
-		// 	type: "array",
-		// 	of: [
-		// 		{
-		// 			type: "block",
-		// 		},
-		// 		{ type: "image" },
-		// 	],
-		// }),
 		defineField({
 			title: "Content",
 			name: "content",
@@ -77,6 +67,12 @@ export const articleSchema = defineType({
 						{ title: "H6", value: "h6" },
 						{ title: "Quote", value: "blockquote" },
 					],
+				}),
+				defineArrayMember({
+					type: "image",
+					options: {
+						hotspot: true,
+					},
 				}),
 			],
 		}),

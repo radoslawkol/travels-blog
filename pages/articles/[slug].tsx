@@ -21,7 +21,6 @@ const ArticlePage: FC<IProps> = ({ article }): ReactElement => {
 			</Head>
 			<Section>
 				<Article article={article} />
-				<div>Sidebar</div>
 			</Section>
 		</>
 	);

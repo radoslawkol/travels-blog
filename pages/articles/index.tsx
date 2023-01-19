@@ -1,4 +1,4 @@
-import { FC, ReactElement, useContext, useEffect, useState } from "react";
+import { FC, ReactElement, useEffect, useState } from "react";
 import Head from "next/head";
 import React from "react";
 import { client } from "@/utils/sanityClient";
@@ -7,7 +7,6 @@ import styled from "styled-components";
 import CategoryButton from "@/components/CategoryButton";
 import Pagination from "@/components/Pagination";
 import { groq } from "next-sanity";
-import { ThemeContext } from "../_app";
 import { useTheme } from "styled-components";
 
 interface IProps {
@@ -15,7 +14,7 @@ interface IProps {
 	categories: { _id: string; category: string }[];
 	total: number;
 }
-const resultsPerPage = 2;
+const resultsPerPage = 4;
 
 const ArticlesPage: FC<IProps> = ({
 	articles,

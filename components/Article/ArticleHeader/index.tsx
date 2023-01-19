@@ -10,11 +10,12 @@ interface IProps {
 		title: string;
 		author: { name: string };
 		date: "string";
+		categories: { category: { _id: string } }[];
 	};
 }
 
 const ArticleHeader: FC<IProps> = ({ article }): ReactElement => {
-	const date = article.date.split("T")[0];
+	const date = article.date?.split("T")[0];
 	return (
 		<Header>
 			<div className='image'>
