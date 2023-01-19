@@ -18,7 +18,7 @@ const PhotoCard: FC<IProps> = ({ photo }): ReactElement => {
 					effect='blur'
 				/>
 				<Info>
-					<span>{photo.date}</span>
+					<span>{photo.date?.split("T")[0]}</span>
 					<h3>{photo.title}</h3>
 				</Info>
 			</Card>

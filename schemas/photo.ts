@@ -22,7 +22,8 @@ export const photoSchema = defineType({
 		defineField({
 			title: "Date",
 			name: "date",
-			type: "date",
+			type: "datetime",
+			initialValue: () => new Date().toISOString(),
 			validation: (rule) => rule.required(),
 		}),
 		defineField({

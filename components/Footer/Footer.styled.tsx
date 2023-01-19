@@ -37,7 +37,6 @@ export const Container = styled.footer`
 		margin: 10px 0;
 		border: none;
 		border-radius: 5px;
-		/* background-color: ${({ theme }) => theme.colors.lightBrown}; */
 		border: 1px solid ${({ theme }) => theme.colors.white};
 		background-color: transparent;
 		cursor: pointer;
@@ -51,7 +50,6 @@ export const Container = styled.footer`
 		}
 		&:hover {
 			transform: scale(0.95);
-			background-color: ${({ theme }) => theme.colors.darkBrown};
 		}
 	}
 	h3 {

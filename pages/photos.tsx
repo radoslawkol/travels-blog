@@ -74,7 +74,8 @@ export const PhotosPage: FC<IProps> = ({
 };
 
 export const getStaticProps = async () => {
-	const photos = await client.fetch(`*[_type == "photo"]{
+	const photos =
+		await client.fetch(`*[_type == "photo"] | order(dateTime(date) desc){
 		title, date, "categories": categories[
         ]->category
         

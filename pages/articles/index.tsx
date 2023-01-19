@@ -14,7 +14,7 @@ interface IProps {
 	categories: { _id: string; category: string }[];
 	total: number;
 }
-const resultsPerPage = 4;
+const resultsPerPage = 8;
 
 const ArticlesPage: FC<IProps> = ({
 	articles,
@@ -97,7 +97,6 @@ const ArticlesPage: FC<IProps> = ({
             }`,
 				{ lastId }
 			);
-			console.log(results);
 
 			if (results.length > 0) {
 				setLastId(results[results.length - 1]._id);

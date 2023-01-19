@@ -11,6 +11,7 @@ import {
 import image from "../../../images/header-home-image.jpg";
 import Logo from "@/components/Logo";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
 const Header: FC = (): ReactElement => {
 	const scrollDownHandler = () => {
@@ -23,11 +24,13 @@ const Header: FC = (): ReactElement => {
 		<Wrapper image={image}>
 			<BgShadow />
 			<CentralContainer>
-				<Logo />
-				<Heading>
-					<Rectangle />
-					<p>Welcome to our travel blog</p>
-				</Heading>
+				<Logo isArticlesPage={false} />
+				<motion.div initial={{ x: -100 }} whileInView={{ x: 0 }}>
+					<Heading>
+						<Rectangle />
+						<p>Welcome to our travel blog</p>
+					</Heading>
+				</motion.div>
 			</CentralContainer>
 			<Text>
 				<p>We create inspiring blog about the world’s most beautiful places</p>

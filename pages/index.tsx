@@ -37,7 +37,8 @@ const HomePage: NextPage<IProps> = ({ articles, categories }) => {
 export default HomePage;
 
 export const getStaticProps = async () => {
-	const articles = await client.fetch(`*[_type == "article"]{
+	const articles =
+		await client.fetch(`*[_type == "article"] | order(dateTime(date) desc){
 		title, slug, coverImage{
 			asset->{
 				_id,

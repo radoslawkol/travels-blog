@@ -25,6 +25,9 @@ export const CentralContainer = styled.div`
 	left: 50%;
 	transform: translateX(-50%);
 	color: ${({ theme }) => theme.colors.white};
+	@media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+		width: auto;
+	}
 `;
 
 export const Rectangle = styled.div`
@@ -40,6 +43,12 @@ export const Heading = styled.h1`
 	font-size: 24px;
 	font-weight: 400;
 	text-transform: uppercase;
+	@media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+		font-size: 30px;
+	}
+	@media (min-width: ${({ theme }) => theme.breakpoints.xxLarge}) {
+		font-size: 48px;
+	}
 	p {
 		text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.658);
 	}
