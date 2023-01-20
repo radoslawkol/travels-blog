@@ -3,7 +3,17 @@ import Image from "next/image";
 import { Card } from "./Post.styled";
 
 interface IProps {
-	article: object;
+	article: {
+		title: string;
+		slug: {
+			current: string;
+		};
+		coverImage: {
+			asset: {
+				url: string;
+			};
+		};
+	};
 }
 
 const Post: FC<IProps> = ({ article }): ReactElement => {

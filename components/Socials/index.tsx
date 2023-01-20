@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPinterestP, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { Container } from "./Socials.styled";
 
-type Props = {
+type IProps = {
 	color?: string;
 };
 
-const Socials: FC<IProps> = (props): ReactElement => {
+const Socials: FC<IProps> = ({ color }): ReactElement => {
 	return (
-		<Container color={props.color}>
+		<Container color={color}>
 			<a href='https://pl.pinterest.com/' target='_blank' rel='noreferrer'>
 				<FontAwesomeIcon icon={faPinterestP} />
 			</a>

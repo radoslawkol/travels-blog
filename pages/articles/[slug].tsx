@@ -6,7 +6,9 @@ import Article from "@/components/Article";
 import { client } from "@/utils/sanityClient";
 
 interface IProps {
-	article: object;
+	article: {
+		title: string;
+	};
 }
 
 const ArticlePage: FC<IProps> = ({ article }): ReactElement => {
@@ -17,7 +19,7 @@ const ArticlePage: FC<IProps> = ({ article }): ReactElement => {
 	return (
 		<>
 			<Head>
-				<title>Travels Blog: How to survive in Asia?</title>
+				<title>Travels Blog: {article.title}</title>
 			</Head>
 			<Section>
 				<Article article={article} />

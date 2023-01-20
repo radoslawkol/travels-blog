@@ -10,9 +10,10 @@ const ModeToggle: FC = (): ReactElement => {
 			<Input
 				type='checkbox'
 				id='darkModeToggle'
+				aria-label='theme-mode-input'
 				onChange={() => setDarkMode((prev: boolean) => !prev)}
 			/>
-			<Label htmlFor='darkModeToggle'></Label>
+			<Label htmlFor='darkModeToggle' aria-label='theme-mode-label'></Label>
 		</Container>
 	);
 };

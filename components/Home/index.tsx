@@ -7,16 +7,15 @@ import Banner from "./Banner";
 import AboutInfo from "../AboutInfo";
 
 interface IProps {
-	articles: object[];
-	categories: object[];
+	articles: { _id: string }[];
 }
 
-const Home: FC<IProps> = ({ articles, categories }): ReactElement => {
+const Home: FC<IProps> = ({ articles }): ReactElement => {
 	return (
 		<Wrapper>
 			<Header />
 			<NewsletterBanner />
-			<LatestPosts articles={articles} categories={categories} />
+			<LatestPosts articles={articles} />
 			<Banner />
 			<section className='about'>
 				<AboutInfo />

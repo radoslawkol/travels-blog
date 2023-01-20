@@ -8,20 +8,13 @@ import { useTheme } from "styled-components";
 
 interface IProps {
 	articles: object[];
-	categories: object[];
 }
 
-const HomePage: NextPage<IProps> = ({ articles, categories }) => {
+const HomePage: NextPage<IProps> = ({ articles }) => {
 	const theme = useTheme();
 	const [darkMode, setDarkMode] = useContext(ThemeContext);
 
 	useEffect(() => {
-		console.log(darkMode);
-		if (darkMode) {
-			document.body.style.background = theme.colors.darkPrimary;
-		} else {
-			document.body.style.background = theme.colors.bgPrimary;
-		}
 		document.body.style.background = theme.colors.bgPrimary;
 	}, [darkMode, theme.colors.darkPrimary]);
 	return (
@@ -29,7 +22,7 @@ const HomePage: NextPage<IProps> = ({ articles, categories }) => {
 			<Head>
 				<title>Travels Blog: John Smith</title>
 			</Head>
-			<Home articles={articles} categories={categories} />
+			<Home articles={articles} />
 		</>
 	);
 };
@@ -39,19 +32,17 @@ export default HomePage;
 export const getStaticProps = async () => {
 	const articles =
 		await client.fetch(`*[_type == "article"] | order(dateTime(date) desc){
-		title, slug, coverImage{
+		_id, title, slug, coverImage{
 			asset->{
 				_id,
 				url
 			}
 		}
 	}`);
-	const categories = await client.fetch(`*[_type == "category"]`);
 
 	return {
 		props: {
 			articles,
-			categories,
 		},
 	};
 };

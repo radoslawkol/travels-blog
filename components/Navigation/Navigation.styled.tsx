@@ -26,8 +26,8 @@ export const MenuList = styled.ul`
 
 	li {
 		a {
-			color: ${(props) =>
-				props.isArticlesPage
+			color: ${({ isArticlesPage }) =>
+				isArticlesPage
 					? ({ theme }) => theme.colors.textSecondary
 					: ({ theme }) => theme.colors.textWhite};
 			text-decoration: none;
@@ -53,8 +53,8 @@ export const Socials = styled.div`
 	display: none;
 	gap: 10px;
 	a {
-		color: ${(props) =>
-			props.isArticlesPage
+		color: ${({ isArticlesPage }) =>
+			isArticlesPage
 				? ({ theme }) => theme.colors.textBlack
 				: ({ theme }) => theme.colors.bgPrimary};
 	}
@@ -66,8 +66,8 @@ export const Socials = styled.div`
 export const MenuBarsIcon = styled(FontAwesomeIcon)`
 	width: 40px;
 	height: 40px;
-	color: ${(props) =>
-		props.isArticlesPage
+	color: ${({ isArticlesPage }) =>
+		isArticlesPage
 			? ({ theme }) => theme.colors.textBlack
 			: ({ theme }) => theme.colors.textWhite};
 	cursor: pointer;

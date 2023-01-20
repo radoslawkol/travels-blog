@@ -1,18 +1,25 @@
 import React, { FC, ReactElement } from "react";
-import { Section } from "./LatestPosts.styled";
-import PostsCategories from "./PostsCategories";
-import Posts from "./Posts";
+import { Section, Container } from "./LatestPosts.styled";
+import Post from "./Post";
+import { motion } from "framer-motion";
 
 interface IProps {
-	articles: object[];
-	categories: object[];
+	articles: { _id: string }[];
 }
 
-const LatestPosts: FC<IProps> = ({ articles, categories }): ReactElement => {
+const LatestPosts: FC<IProps> = ({ articles }): ReactElement => {
 	return (
 		<Section>
-			{/* <PostsCategories categories={categories} /> */}
-			<Posts articles={articles} />
+			<motion.div
+				initial={{ opacity: 0, y: 50 }}
+				whileInView={{ opacity: 1, y: 0 }}
+			>
+				<Container>
+					{articles?.slice(0, 3).map((article, i) => (
+						<Post key={article._id} article={article} />
+					))}
+				</Container>
+			</motion.div>
 		</Section>
 	);
 };
