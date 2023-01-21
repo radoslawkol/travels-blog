@@ -6,8 +6,11 @@ import ArticlesContainer from "@/components/ArticlesContainer";
 import styled from "styled-components";
 import CategoryButton from "@/components/CategoryButton";
 import Pagination from "@/components/Pagination";
-import { groq } from "next-sanity";
 import { useTheme } from "styled-components";
+import { useFetchArticlesByCategory } from "@/utils/fetchArticlesByCategoryHook";
+import { useSetBodyBackground } from "@/utils/setBodyBackgroundHook";
+import { useNextPageArticles } from "@/utils/fetchNextPageHook";
+import { usePrevPageArticles } from "@/utils/fetchPrevPageHook";
 
 interface IProps {
 	articles: { _id: string }[];
@@ -30,9 +33,8 @@ const ArticlesPage: FC<IProps> = ({
 	const [prevPages, setPrevPages] = useState([]);
 	const [category, setCategory] = useState("");
 
-	useEffect(() => {
-		document.body.style.background = theme.colors.bgPrimary;
-	}, [theme.colors.bgPrimary]);
+	useSetBodyBackground({ color: theme.colors.bgPrimary });
+	useFetchArticlesByCategory(category, articles, setResults, setCategory);
 
 	useEffect(() => {
 		setLastId(articles[articles.length - 1]._id);
@@ -40,107 +42,32 @@ const ArticlesPage: FC<IProps> = ({
 	}, []);
 
 	useEffect(() => {
-		console.log(prevPages);
 		setPrevId(prevPages[currentPage - 1]);
 	}, [prevPages, currentPage]);
 
-	useEffect(() => {
-		if (category === "all") {
-			setCategory("");
-			setResults(articles);
-		} else if (category) {
-			fetchByCategory(category);
-		}
-	}, [category]);
-
-	const fetchByCategory = async (category: string) => {
-		try {
-			const articles =
-				await client.fetch(`*[_type == "article" && "${category}" in categories[]->category]{
-		_id, title, slug, categories[] -> {
-			category
-		}, coverImage{
-					asset->{
-						_id,
-						url
-							}
-						}}`);
-			console.log(articles);
-			setResults(articles);
-		} catch (err) {
-			console.log(err);
-		}
+	const fetchNextPage = () => {
+		useNextPageArticles(
+			setPrevId,
+			setPrevPages,
+			results,
+			resultsPerPage,
+			setLastId,
+			setResults,
+			setCurrentPage,
+			lastId
+		);
 	};
 
-	const fetchNextPage = async () => {
-		setPrevId(results[0]._id);
-
-		setPrevPages((prev) => {
-			const isExist = prev.find((id) => id === results[0]._id);
-			if (!isExist) {
-				return [...prev, results[0]._id];
-			}
-			return prev;
-		});
-		try {
-			if (lastId === null) {
-				return;
-			}
-			const results = await client.fetch(
-				groq`*[_type == "article" && _id > $lastId] | order(_id) [0...${resultsPerPage}]{
-                _id, title, slug, coverImage{
-					asset->{
-						_id,
-						url
-							}
-						}
-            }`,
-				{ lastId }
-			);
-
-			if (results.length > 0) {
-				setLastId(results[results.length - 1]._id);
-				setResults(results);
-				setCurrentPage((prev) => prev + 1);
-			} else {
-				setLastId(null);
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	};
-
-	const fetchPrevPage = async () => {
-		try {
-			if (prevId === null || prevId === "") {
-				return;
-			}
-
-			const results = await client.fetch(
-				groq`*[_type == "article" && _id >= $prevId] | order(_id) [0...${resultsPerPage}]{
-                _id, title, slug, coverImage{
-					asset->{
-						_id,
-						url
-							}
-						}
-            }`,
-				{ prevId }
-			);
-			console.log(results);
-
-			if (results.length > 0) {
-				setPrevId(results[0]._id);
-				setLastId(results[results.length - 1]._id);
-				setResults(results);
-				setCurrentPage((prev) => prev - 1);
-			} else {
-				setPrevId(null);
-				setResults(articles);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+	const fetchPrevPage = () => {
+		usePrevPageArticles(
+			articles,
+			prevId,
+			resultsPerPage,
+			setPrevId,
+			setLastId,
+			setResults,
+			setCurrentPage
+		);
 	};
 	return (
 		<>

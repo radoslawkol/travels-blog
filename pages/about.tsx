@@ -1,18 +1,17 @@
-import React, { useEffect, FC, ReactElement, useContext } from "react";
+import React, { useEffect, FC, ReactElement } from "react";
 import Head from "next/head";
 import AboutHeader from "@/components/AboutHeader";
 import AboutContent from "@/components/AboutContent";
 import { useMediaQuery } from "usehooks-ts";
-import { ThemeContext } from "./_app";
+import { useSetBodyBackground } from "@/utils/setBodyBackgroundHook";
+import { useTheme } from "styled-components";
 
 const AboutPage: FC = (): ReactElement => {
-	const [darkMode, setDarkMode] = useContext(ThemeContext);
+	const theme = useTheme();
 	const medium = useMediaQuery("(min-width: 768px)");
 	const xxLarge = useMediaQuery("(min-width: 1400px)");
 
-	useEffect(() => {
-		document.body.style.background = darkMode ? "#393939" : "#DBD0C7";
-	}, [darkMode]);
+	useSetBodyBackground({ color: theme.colors.bgLightBrown });
 
 	useEffect(() => {
 		if (medium) {

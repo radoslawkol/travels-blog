@@ -1,10 +1,9 @@
-import { useContext, useEffect } from "react";
 import Head from "next/head";
 import type { NextPage } from "next";
 import Home from "@/components/Home";
 import { client } from "@/utils/sanityClient";
-import { ThemeContext } from "./_app";
 import { useTheme } from "styled-components";
+import { useSetBodyBackground } from "@/utils/setBodyBackgroundHook";
 
 interface IProps {
 	articles: object[];
@@ -12,11 +11,9 @@ interface IProps {
 
 const HomePage: NextPage<IProps> = ({ articles }) => {
 	const theme = useTheme();
-	const [darkMode, setDarkMode] = useContext(ThemeContext);
 
-	useEffect(() => {
-		document.body.style.background = theme.colors.bgPrimary;
-	}, [darkMode, theme.colors.darkPrimary]);
+	useSetBodyBackground({ color: theme.colors.bgPrimary });
+
 	return (
 		<>
 			<Head>

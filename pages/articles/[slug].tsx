@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useTheme } from "styled-components";
 import Article from "@/components/Article";
 import { client } from "@/utils/sanityClient";
+import { useSetBodyBackground } from "@/utils/setBodyBackgroundHook";
 
 interface IProps {
 	article: {
@@ -13,9 +14,9 @@ interface IProps {
 
 const ArticlePage: FC<IProps> = ({ article }): ReactElement => {
 	const theme = useTheme();
-	useEffect(() => {
-		document.body.style.background = theme.colors.bgLightBrown;
-	});
+
+	useSetBodyBackground({ color: theme.colors.bgLightBrown });
+
 	return (
 		<>
 			<Head>
@@ -27,11 +28,6 @@ const ArticlePage: FC<IProps> = ({ article }): ReactElement => {
 		</>
 	);
 };
-
-const Section = styled.section`
-	min-height: 100vh;
-	padding: 60px 0;
-`;
 
 export default ArticlePage;
 
@@ -86,3 +82,8 @@ export const getStaticProps = async (context: { params: { slug: string } }) => {
 		console.log(err);
 	}
 };
+
+const Section = styled.section`
+	min-height: 100vh;
+	padding: 60px 0;
+`;

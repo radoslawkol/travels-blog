@@ -1,4 +1,4 @@
-import { useEffect, FC, ReactElement, useState, useContext } from "react";
+import { useEffect, FC, ReactElement, useState } from "react";
 import CategoryButton from "@/components/CategoryButton";
 import Head from "next/head";
 import React from "react";
@@ -6,7 +6,8 @@ import styled from "styled-components";
 import PhotoCard from "@/components/PhotoCard";
 import { client } from "@/utils/sanityClient";
 import { motion } from "framer-motion";
-import { ThemeContext } from "./_app";
+import { useSetBodyBackground } from "@/utils/setBodyBackgroundHook";
+import { useTheme } from "styled-components";
 
 interface IProps {
 	photos: { _id: string; categories: [] }[];
@@ -17,15 +18,11 @@ export const PhotosPage: FC<IProps> = ({
 	photos,
 	categories,
 }): ReactElement => {
-	const [darkMode, setDarkMode] = useContext(ThemeContext);
+	const theme = useTheme();
 	const [results, setResults] = useState(photos);
 	const [category, setCategory] = useState("all");
 
-	useEffect(() => {
-		document.body.style.background = darkMode
-			? "#393939"
-			: "linear-gradient(180deg, #c6b2a3ba 0%, rgba(237, 229, 222, 0.91) 40%)";
-	}, [darkMode]);
+	useSetBodyBackground({ color: theme.colors.bgLightBrown });
 
 	const fetchByCategory = (category: string) => {
 		if (category !== "all") {

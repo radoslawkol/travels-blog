@@ -4,19 +4,10 @@ Object.defineProperty(window, "matchMedia", {
 		matches: false,
 		media: query,
 		onchange: null,
-		addListener: jest.fn(), // Deprecated
-		removeListener: jest.fn(), // Deprecated
+		addListener: jest.fn(),
+		removeListener: jest.fn(),
 		addEventListener: jest.fn(),
 		removeEventListener: jest.fn(),
 		dispatchEvent: jest.fn(),
 	})),
 });
-
-// module.exports = global.matchMedia =
-// 	global.matchMedia ||
-// 	function () {
-// 		return {
-// 			addListener: jest.fn(),
-// 			removeListener: jest.fn(),
-// 		};
-// 	};
