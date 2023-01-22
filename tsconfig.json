@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es5",
+		"target": "es6",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
 		"skipLibCheck": true,
@@ -14,12 +14,16 @@
 		"isolatedModules": true,
 		"jsx": "preserve",
 		"incremental": true,
-		"baseUrl": ".",
+		"baseUrl": "./",
 		"paths": {
 			"@/components/*": ["components/*"],
-			"@/images/*": ["images/*"]
+			"@/pages/*": ["pages/*"],
+			"@/images/*": ["images/*"],
+			"@/styles/*": ["styles/*"],
+			"@/utils/*": ["utils/*"],
+			"@/interfaces/*": ["interfaces/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.js"],
 	"exclude": ["node_modules"]
 }

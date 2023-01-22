@@ -1,9 +1,9 @@
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
 import React from "react";
 
-type Props = {};
+type IProps = {};
 
-class Document extends NextDocument<Props> {
+class Document extends NextDocument<IProps> {
 	render() {
 		return (
 			<Html>
@@ -13,6 +13,7 @@ class Document extends NextDocument<Props> {
 				<body>
 					<Main />
 					<NextScript />
+					<div id='modal-root'></div>
 				</body>
 			</Html>
 		);
