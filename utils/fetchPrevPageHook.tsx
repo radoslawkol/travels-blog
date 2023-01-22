@@ -1,7 +1,7 @@
 import { client } from "@/utils/sanityClient";
 import { groq } from "next-sanity";
 
-export const usePrevPageArticles = async (
+export const prevPageArticles = async (
 	articles,
 	prevId,
 	resultsPerPage,

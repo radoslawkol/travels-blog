@@ -2,10 +2,10 @@ import { FC, ReactElement } from "react";
 import ArticleContent from "./ArticleContent";
 import ArticleHeader from "./ArticleHeader";
 import { Wrapper } from "./Article.styled";
-import { IArticle } from "@/interfaces/IArticle";
+import { IArticleWithSlug } from "@/interfaces/IArticle";
 
 interface IProps {
-	article: IArticle;
+	article: IArticleWithSlug;
 }
 
 const Article: FC<IProps> = ({ article }): ReactElement => {

@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { useTheme } from "styled-components";
 
 interface IProps {
-	setIsOpen: (isOpen: boolean) => boolean;
+	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const SideMobileNavigation: FC<IProps> = ({

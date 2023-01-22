@@ -1,12 +1,12 @@
 import React from "react";
 import { client } from "./sanityClient";
 import { useEffect } from "react";
-import { IArticle } from "@/interfaces/IArticle";
+import { IArticleWithSlug } from "@/interfaces/IArticle";
 
 export const useFetchArticlesByCategory = async (
 	category: string,
-	articles: IArticle[],
-	setResults: React.Dispatch<React.SetStateAction<IArticle[]>>,
+	articles: IArticleWithSlug[],
+	setResults: React.Dispatch<React.SetStateAction<IArticleWithSlug[]>>,
 	setCategory: React.Dispatch<React.SetStateAction<string>>
 ) => {
 	useEffect(() => {

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+interface Props {
+	isArticlesPage: boolean;
+}
 export const Nav = styled.nav`
 	position: absolute;
 	width: 100%;
@@ -26,7 +29,7 @@ export const MenuList = styled.ul`
 
 	li {
 		a {
-			color: ${({ isArticlesPage }) =>
+			color: ${({ isArticlesPage }: Props) =>
 				isArticlesPage
 					? ({ theme }) => theme.colors.textSecondary
 					: ({ theme }) => theme.colors.textWhite};
@@ -53,7 +56,7 @@ export const Socials = styled.div`
 	display: none;
 	gap: 10px;
 	a {
-		color: ${({ isArticlesPage }) =>
+		color: ${({ isArticlesPage }: Props) =>
 			isArticlesPage
 				? ({ theme }) => theme.colors.textBlack
 				: ({ theme }) => theme.colors.bgPrimary};
@@ -66,7 +69,7 @@ export const Socials = styled.div`
 export const MenuBarsIcon = styled(FontAwesomeIcon)`
 	width: 40px;
 	height: 40px;
-	color: ${({ isArticlesPage }) =>
+	color: ${({ isArticlesPage }: Props) =>
 		isArticlesPage
 			? ({ theme }) => theme.colors.textBlack
 			: ({ theme }) => theme.colors.textWhite};

@@ -4,22 +4,10 @@ import Home from "@/components/Home";
 import { client } from "@/utils/sanityClient";
 import { useTheme } from "styled-components";
 import { useSetBodyBackground } from "@/utils/setBodyBackgroundHook";
-import { IArticle } from "@/interfaces/IArticle";
-// interface IProps {
-// 	articles: {
-// 		title: string;
-// 		_id: string;
-// 		slug: string;
-// 		coverImage: {
-// 			asset: {
-// 				_id: string;
-// 				url: string;
-// 			};
-// 		};
-// 	}[];
-// }
+import { IArticleWithSlug } from "@/interfaces/IArticle";
+
 interface IProps {
-	articles: IArticle[];
+	articles: IArticleWithSlug[];
 }
 
 const HomePage: NextPage<IProps> = ({ articles }) => {

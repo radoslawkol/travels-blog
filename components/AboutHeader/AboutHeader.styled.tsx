@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+interface Props {
+	headerImageSmall?: {
+		src: string;
+	};
+	headerImageLarge?: {
+		src: string;
+	};
+}
+
 export const Header = styled.header`
 	position: relative;
 	height: 100vh;
@@ -8,7 +17,7 @@ export const Header = styled.header`
 	justify-content: center;
 	padding: 20px;
 	background: ${({ theme }) => theme.gradients.dark},
-		url(${(props) => props.headerImageSmall.src});
+		url(${(props: Props) => props.headerImageSmall.src});
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;

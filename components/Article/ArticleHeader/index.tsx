@@ -1,10 +1,10 @@
 import { FC, ReactElement } from "react";
 import Image from "next/image";
 import { Header, Info } from "./ArticleHeader.styled";
-import { IArticle } from "@/interfaces/IArticle";
+import { IArticleWithSlug } from "@/interfaces/IArticle";
 
 interface IProps {
-	article: IArticle;
+	article: IArticleWithSlug;
 }
 
 const ArticleHeader: FC<IProps> = ({ article }): ReactElement => {
