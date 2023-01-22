@@ -8,10 +8,12 @@ import { client } from "@/utils/sanityClient";
 import { motion } from "framer-motion";
 import { useSetBodyBackground } from "@/utils/setBodyBackgroundHook";
 import { useTheme } from "styled-components";
+import { IPhoto } from "@/interfaces/IPhoto";
+import { IPhotoCategory } from "@/interfaces/IPhotoCategory";
 
 interface IProps {
-	photos: { _id: string; categories: [] }[];
-	categories: { _id: string; category: string }[];
+	photos: IPhoto[];
+	categories: IPhotoCategory[];
 }
 
 export const PhotosPage: FC<IProps> = ({
@@ -49,11 +51,8 @@ export const PhotosPage: FC<IProps> = ({
 					<div onClick={() => setCategory("all")}>
 						<CategoryButton category='all' />
 					</div>
-					{categories.map((category) => (
-						<div
-							key={category._id}
-							onClick={() => setCategory(category.category)}
-						>
+					{categories.map((category, i) => (
+						<div key={i} onClick={() => setCategory(category.category)}>
 							<CategoryButton category={category.category} />
 						</div>
 					))}
@@ -73,10 +72,8 @@ export const PhotosPage: FC<IProps> = ({
 export const getStaticProps = async () => {
 	const photos =
 		await client.fetch(`*[_type == "photo"] | order(dateTime(date) desc){
-		title, date, "categories": categories[
-        ]->category
-        
-		 , photo{
+		_id, title, date, "categories": categories[
+        ]->category, photo{
 			asset->{
 				_id,
 				url

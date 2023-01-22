@@ -5,11 +5,10 @@ import { useTheme } from "styled-components";
 import Article from "@/components/Article";
 import { client } from "@/utils/sanityClient";
 import { useSetBodyBackground } from "@/utils/setBodyBackgroundHook";
+import { IArticleWithSlug } from "@/interfaces/IArticle";
 
 interface IProps {
-	article: {
-		title: string;
-	};
+	article: IArticleWithSlug;
 }
 
 const ArticlePage: FC<IProps> = ({ article }): ReactElement => {
@@ -29,19 +28,13 @@ const ArticlePage: FC<IProps> = ({ article }): ReactElement => {
 	);
 };
 
-export default ArticlePage;
-
-interface IArticle {
-	slug: { current: string };
-}
-
 export const getStaticPaths = async () => {
 	try {
 		const articles = await client.fetch(`*[_type == "article"]{
 				slug
 			}`);
 
-		const paths = articles.map((article: IArticle) => {
+		const paths = articles.map((article: IArticleWithSlug) => {
 			return { params: { slug: article.slug.current } };
 		});
 
@@ -87,3 +80,5 @@ const Section = styled.section`
 	min-height: 100vh;
 	padding: 60px 0;
 `;
+
+export default ArticlePage;

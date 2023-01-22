@@ -3,8 +3,10 @@ import React, { FC, ReactElement } from "react";
 import Logo from "../Logo";
 import Socials from "@/components/Socials";
 import { Container, Wrapper } from "./Footer.styled";
+import { useTheme } from "styled-components";
 
 const Footer: FC = (): ReactElement => {
+	const theme = useTheme();
 	return (
 		<Wrapper>
 			<div className='wave'>
@@ -38,7 +40,7 @@ const Footer: FC = (): ReactElement => {
 				<div className='contact'>
 					<h3>Contact</h3>
 					<span>traveljohn@example.gmail.com</span>
-					<Socials color={({ theme }) => theme.colors.textWhite} />
+					<Socials color={theme.colors.textWhite} />
 				</div>
 			</Container>
 		</Wrapper>

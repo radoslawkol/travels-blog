@@ -5,9 +5,10 @@ import NewsletterBanner from "../NewsletterBanner";
 import LatestPosts from "./LatestPosts";
 import Banner from "./Banner";
 import AboutInfo from "../AboutInfo";
+import { IArticleWithSlug } from "@/interfaces/IArticle";
 
 interface IProps {
-	articles: { _id: string }[];
+	articles: IArticleWithSlug[];
 }
 
 const Home: FC<IProps> = ({ articles }): ReactElement => {

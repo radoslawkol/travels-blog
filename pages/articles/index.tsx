@@ -11,10 +11,12 @@ import { useFetchArticlesByCategory } from "@/utils/fetchArticlesByCategoryHook"
 import { useSetBodyBackground } from "@/utils/setBodyBackgroundHook";
 import { useNextPageArticles } from "@/utils/fetchNextPageHook";
 import { usePrevPageArticles } from "@/utils/fetchPrevPageHook";
+import { IArticle } from "@/interfaces/IArticle";
+import { IArticleCategory } from "@/interfaces/IArticleCategory";
 
 interface IProps {
-	articles: { _id: string }[];
-	categories: { _id: string; category: string }[];
+	articles: IArticle[];
+	categories: IArticleCategory[];
 	total: number;
 }
 const resultsPerPage = 8;
@@ -25,7 +27,7 @@ const ArticlesPage: FC<IProps> = ({
 	total,
 }): ReactElement => {
 	const theme = useTheme();
-	const [results, setResults] = useState<{ _id: string }[]>(articles);
+	const [results, setResults] = useState(articles);
 	const [lastId, setLastId] = useState<string | null>("");
 	const [prevId, setPrevId] = useState<string | null>("");
 	const [currentPage, setCurrentPage] = useState(0);

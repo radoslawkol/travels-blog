@@ -10,9 +10,9 @@ export const RichTextComponents = {
 				: undefined;
 
 			return (
-				<Link href={value.href} rel={rel}>
-					<LinkElement>{children}</LinkElement>
-				</Link>
+				<LinkElement href={value.href} rel={rel}>
+					{children}
+				</LinkElement>
 			);
 		},
 		strong: ({ children }: any) => <Strong>{children}</Strong>,
@@ -44,7 +44,7 @@ export const RichTextComponents = {
 	},
 };
 
-const LinkElement = styled.a`
+const LinkElement = styled(Link)`
 	color: ${({ theme }) => theme.colors.bgSecondary};
 `;
 

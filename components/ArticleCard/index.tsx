@@ -3,15 +3,10 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { Article } from "./ArticleCard.styled";
 import Link from "next/link";
+import { IArticleWithSlug } from "@/interfaces/IArticle";
 
 interface IProps {
-	article: {
-		coverImage: {
-			asset: {
-				url: string;
-			};
-		};
-	};
+	article: IArticleWithSlug;
 }
 
 const ArticleCard: FC<IProps> = ({ article }): ReactElement => {

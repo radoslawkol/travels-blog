@@ -5,7 +5,7 @@ import { theme, darkTheme } from "@/styles/theme.styled";
 import GlobalStyles from "@/styles/globals.styled";
 import Layout from "@/components/Layout";
 
-export const ThemeContext = React.createContext("light");
+export const ThemeContext = React.createContext([false, () => {}]);
 
 function MyApp({ Component, pageProps, ...appProps }: AppProps) {
 	const studioPage = appProps.router.pathname.includes("/studio");

@@ -1,19 +1,10 @@
 import React, { FC, ReactElement } from "react";
 import Image from "next/image";
 import { Card } from "./Post.styled";
+import { IArticleWithSlug } from "@/interfaces/IArticle";
 
 interface IProps {
-	article: {
-		title: string;
-		slug: {
-			current: string;
-		};
-		coverImage: {
-			asset: {
-				url: string;
-			};
-		};
-	};
+	article: IArticleWithSlug;
 }
 
 const Post: FC<IProps> = ({ article }): ReactElement => {

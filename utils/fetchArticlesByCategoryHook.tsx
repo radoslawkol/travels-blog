@@ -1,11 +1,13 @@
+import React from "react";
 import { client } from "./sanityClient";
 import { useEffect } from "react";
+import { IArticle } from "@/interfaces/IArticle";
 
 export const useFetchArticlesByCategory = async (
 	category: string,
-	articles: [],
-	setResults: () => [],
-	setCategory: () => string
+	articles: IArticle[],
+	setResults: React.Dispatch<React.SetStateAction<IArticle[]>>,
+	setCategory: React.Dispatch<React.SetStateAction<string>>
 ) => {
 	useEffect(() => {
 		if (category === "all") {

@@ -20,7 +20,8 @@
 			"@/pages/*": ["pages/*"],
 			"@/images/*": ["images/*"],
 			"@/styles/*": ["styles/*"],
-			"@/utils/*": ["utils/*"]
+			"@/utils/*": ["utils/*"],
+			"@/interfaces/*": ["interfaces/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.js"],

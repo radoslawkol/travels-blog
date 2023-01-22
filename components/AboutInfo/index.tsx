@@ -4,8 +4,10 @@ import image from "../../images/about-info.jpg";
 import { Container } from "./AboutInfo.styled";
 import Socials from "@/components/Socials";
 import { motion } from "framer-motion";
+import { useTheme } from "styled-components";
 
 const AboutInfo: FC = (): ReactElement => {
+	const theme = useTheme();
 	return (
 		<motion.div
 			initial={{ opacity: 0, x: -200 }}
@@ -28,7 +30,7 @@ const AboutInfo: FC = (): ReactElement => {
 						adipiscing amet mollis scelerisque. Tristique risus nulla commodo id
 						duis.
 					</p>
-					<Socials color={({ theme }) => theme.colors.darkBrown} />
+					<Socials color={theme.colors.darkBrown} />
 				</div>
 			</Container>
 		</motion.div>

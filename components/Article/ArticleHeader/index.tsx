@@ -1,17 +1,10 @@
 import { FC, ReactElement } from "react";
 import Image from "next/image";
 import { Header, Info } from "./ArticleHeader.styled";
+import { IArticle } from "@/interfaces/IArticle";
 
 interface IProps {
-	article: {
-		coverImage: {
-			asset: { url: string };
-		};
-		title: string;
-		author: { name: string };
-		date: "string";
-		categories: { category: { _id: string } }[];
-	};
+	article: IArticle;
 }
 
 const ArticleHeader: FC<IProps> = ({ article }): ReactElement => {
@@ -23,12 +16,12 @@ const ArticleHeader: FC<IProps> = ({ article }): ReactElement => {
 			</div>
 			<Info>
 				<span>
-					Posted on {date} by {article.author.name}
+					Posted on {date} by {article.author?.name}
 				</span>
 				<h1>{article.title}</h1>
 				<ul>
 					{article.categories?.map((cat, i) => {
-						return <li key={cat.category._id + i}>#{cat.category}</li>;
+						return <li key={i}>#{cat.category}</li>;
 					})}
 				</ul>
 			</Info>

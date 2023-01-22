@@ -3,9 +3,10 @@ import { Card, Info } from "./PhotoCard.styled";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { motion } from "framer-motion";
+import { IPhoto } from "@/interfaces/IPhoto";
 
 interface IProps {
-	photo: object;
+	photo: IPhoto;
 }
 
 const PhotoCard: FC<IProps> = ({ photo }): ReactElement => {
