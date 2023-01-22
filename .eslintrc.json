@@ -1,5 +1,10 @@
 {
-	"extends": ["next/core-web-vitals", "next", "eslint:recommended"],
+	"extends": [
+		"next/core-web-vitals",
+		"next",
+		"eslint:recommended",
+		"plugin:cypress/recommended"
+	],
 	"env": {
 		"jest": true
 	}

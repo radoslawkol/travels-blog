@@ -11,6 +11,7 @@ export const Container = styled.div`
 	margin: 40px 0;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 60px;
 	img {
 		object-fit: cover;

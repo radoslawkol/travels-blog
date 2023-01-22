@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useEffect } from "react";
+import React, { FC, ReactElement } from "react";
 import Head from "next/head";
 import styled from "styled-components";
 import { useTheme } from "styled-components";
