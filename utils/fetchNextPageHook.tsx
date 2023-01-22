@@ -1,20 +1,7 @@
-import React from "react";
-import { IArticle } from "@/interfaces/IArticle";
 import { client } from "@/utils/sanityClient";
 import { groq } from "next-sanity";
 
-interface IArguments {
-	setPrevId: React.Dispatch<React.SetStateAction<string>>;
-	setPrevPages: React.Dispatch<React.SetStateAction<string[]>>;
-	results: IArticle[];
-	resultsPerPage: number;
-	setLastId: React.Dispatch<React.SetStateAction<string>>;
-	setResults: React.Dispatch<React.SetStateAction<IArticle[]>>;
-	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-	lastId: string;
-}
-
-export const useNextPageArticles: IArguments = async (
+export const nextPageArticles = async (
 	setPrevId,
 	setPrevPages,
 	results,

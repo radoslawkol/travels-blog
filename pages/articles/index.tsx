@@ -9,13 +9,13 @@ import Pagination from "@/components/Pagination";
 import { useTheme } from "styled-components";
 import { useFetchArticlesByCategory } from "@/utils/fetchArticlesByCategoryHook";
 import { useSetBodyBackground } from "@/utils/setBodyBackgroundHook";
-import { useNextPageArticles } from "@/utils/fetchNextPageHook";
-import { usePrevPageArticles } from "@/utils/fetchPrevPageHook";
-import { IArticle } from "@/interfaces/IArticle";
+import { nextPageArticles } from "@/utils/fetchNextPageHook";
+import { prevPageArticles } from "@/utils/fetchPrevPageHook";
+import { IArticleWithSlug } from "@/interfaces/IArticle";
 import { IArticleCategory } from "@/interfaces/IArticleCategory";
 
 interface IProps {
-	articles: IArticle[];
+	articles: IArticleWithSlug[];
 	categories: IArticleCategory[];
 	total: number;
 }
@@ -47,8 +47,8 @@ const ArticlesPage: FC<IProps> = ({
 		setPrevId(prevPages[currentPage - 1]);
 	}, [prevPages, currentPage]);
 
-	const fetchNextPage = () => {
-		useNextPageArticles(
+	const nextPageHandler = () => {
+		nextPageArticles(
 			setPrevId,
 			setPrevPages,
 			results,
@@ -60,8 +60,8 @@ const ArticlesPage: FC<IProps> = ({
 		);
 	};
 
-	const fetchPrevPage = () => {
-		usePrevPageArticles(
+	const prevPageHander = () => {
+		prevPageArticles(
 			articles,
 			prevId,
 			resultsPerPage,
@@ -94,8 +94,8 @@ const ArticlesPage: FC<IProps> = ({
 					<ArticlesContainer articles={results} />
 					{!category && (
 						<Pagination
-							fetchNextPage={fetchNextPage}
-							fetchPrevPage={fetchPrevPage}
+							fetchNextPage={nextPageHandler}
+							fetchPrevPage={prevPageHander}
 							currentPage={currentPage}
 							lastPage={lastPage}
 						/>

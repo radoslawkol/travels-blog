@@ -16,7 +16,7 @@ const LatestPosts: FC<IProps> = ({ articles }): ReactElement => {
 				whileInView={{ opacity: 1, y: 0 }}
 			>
 				<Container>
-					{articles?.slice(0, 3).map((article, i) => (
+					{articles?.slice(0, 3).map((article) => (
 						<Post key={article._id} article={article} />
 					))}
 				</Container>

@@ -1,8 +1,13 @@
 import styled, { keyframes } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+interface Props {
+	image?: {
+		src: string;
+	};
+}
 export const Wrapper = styled.div`
-	background-image: url(${(props) => props.image.src});
+	background-image: url(${(props: Props) => props.image.src});
 	width: 100%;
 	height: 100vh;
 	background-repeat: no-repeat;

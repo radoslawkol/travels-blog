@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import Link from "next/link";
 
+interface Props {
+	isArticlesPage: boolean;
+}
+
 export const LogoWrapper = styled.div`
 	display: flex;
 	align-items: center;
@@ -8,7 +12,7 @@ export const LogoWrapper = styled.div`
 `;
 
 export const CompanyName = styled.strong`
-	color: ${(props) =>
+	color: ${(props: Props) =>
 		props.isArticlesPage
 			? ({ theme }) => theme.colors.textSecondary
 			: ({ theme }) => theme.colors.textWhite};

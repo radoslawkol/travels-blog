@@ -1,4 +1,6 @@
-export const theme = {
+import { DefaultTheme } from "styled-components";
+
+export const theme: DefaultTheme = {
 	colors: {
 		bgPrimary: "#F8F8F8",
 		bgSecondary: "#059270",
@@ -34,7 +36,7 @@ export const theme = {
 	},
 };
 
-export const darkTheme = {
+export const darkTheme: any = {
 	colors: {
 		bgPrimary: "#393939",
 		bgSecondary: "#059270",
