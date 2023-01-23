@@ -27,7 +27,7 @@ const AboutPage: FC = (): ReactElement => {
 			<Head>
 				<title>Travels Blog: About me - John Smith</title>
 			</Head>
-			<div>
+			<div style={{ overflow: "hidden" }}>
 				<AboutHeader />
 				<AboutContent />
 			</div>

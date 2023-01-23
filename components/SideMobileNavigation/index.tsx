@@ -59,7 +59,7 @@ const SideMobileNavigation: FC<IProps> = ({
 								<Link href='/photos'>Photos</Link>
 							</li>
 						</ul>
-						<Socials color={theme.colors.darkSecondary} />
+						<Socials color={theme.colors.textSecondary} />
 					</div>
 				</Nav>
 			</Backdrop>,

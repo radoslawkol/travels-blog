@@ -57,7 +57,7 @@ export const Nav = styled.nav`
 		}
 		a {
 			font-size: 18px;
-			color: ${({ theme }) => theme.colors.darkSecondary};
+			color: ${({ theme }) => theme.colors.textSecondary};
 			text-decoration: none;
 		}
 	}
@@ -66,5 +66,5 @@ export const Nav = styled.nav`
 export const XIcon = styled(FontAwesomeIcon)`
 	width: 40px;
 	height: 40px;
-	color: ${({ theme }) => theme.colors.darkSecondary};
+	color: ${({ theme }) => theme.colors.textSecondary};
 `;
