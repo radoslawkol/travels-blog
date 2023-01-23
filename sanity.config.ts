@@ -10,12 +10,9 @@ export default defineConfig({
 	basePath: "/studio",
 	name: "Travels_Blog_Content_Studio",
 	title: "Travels Blog Content Studio",
-
 	projectId,
 	dataset,
-
 	plugins: [deskTool(), visionTool()],
-
 	schema: {
 		types: schemaTypes,
 	},
