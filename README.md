@@ -1,17 +1,17 @@
-## Travels Blog
+# Travels Blog
 
-# Description
+## Description
 
 Blog website about travels, where user can read articles, search articles by category and view some photos. Admin has ability to publish articles thanks to Sanity Studio.
 
 See project:  https://travels-blog.vercel.app/
 
-# My goal
+## My goal
 
 I wanted to check what headless CMS can offer and how to use it. Also I wanted to get familiar with Styled Components and implement some basic unit and e2e
 tests.
 
-# What I learned
+## What I learned
 
 - Working with Sanity headless CMS
 - Fetching data using GROQ query language
@@ -21,7 +21,7 @@ tests.
 - Wrtiting e2e Cypress tests 
 
 
-# Used Technologies
+## Used Technologies
 
 - React
 - Nextjs
